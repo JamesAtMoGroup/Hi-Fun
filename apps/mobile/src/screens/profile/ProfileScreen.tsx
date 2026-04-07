@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, TouchableOpacity, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -38,6 +38,16 @@ export default function ProfileScreen() {
   return (
     <View className="flex-1 bg-white">
       <ScrollView>
+        {/* Editable profile header area */}
+        <TouchableOpacity
+          className="absolute right-4 top-4 z-10"
+          onPress={() => navigation.navigate('EditProfile')}
+        >
+          <Text className="text-purple-600 text-sm font-medium">
+            {t('common.edit')}
+          </Text>
+        </TouchableOpacity>
+
         <ProfileHeader
           avatarUrl={MOCK_USER.avatarUrl}
           displayName={MOCK_USER.displayName}

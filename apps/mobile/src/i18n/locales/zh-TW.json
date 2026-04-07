@@ -30,7 +30,8 @@
     "details": "活動詳情",
     "attending": "參加",
     "interested": "有興趣",
-    "wantToGo": "想去"
+    "wantToGo": "想去",
+    "past": "過去"
   },
   "dating": {
     "gender": "性別",
@@ -38,12 +39,26 @@
     "age": "年齡",
     "discover": "探索",
     "filter": "篩選",
-    "bio": "自我介紹",
+    "bio": "交友自介",
     "photos": "照片",
     "male": "男性",
     "female": "女性",
     "nonBinary": "非二元",
-    "other": "其他"
+    "other": "其他",
+    "top": "攻",
+    "bottom": "受",
+    "vers": "不分",
+    "versTop": "偏攻",
+    "versBottom": "偏受",
+    "side": "Side",
+    "showOnDiscover": "在探索中顯示我",
+    "addPhoto": "新增照片",
+    "datingFilters": "交友篩選",
+    "interestedInGenders": "感興趣的性別",
+    "interestedInRoles": "感興趣的角色",
+    "ageRange": "年齡範圍",
+    "maxDistance": "最大距離",
+    "kmUnit": "公里"
   },
   "common": {
     "confirm": "確認",
@@ -57,7 +72,8 @@
     "done": "完成",
     "back": "返回",
     "retry": "重試",
-    "error": "錯誤"
+    "error": "錯誤",
+    "appVersion": "應用程式版本"
   },
   "map": {
     "locateMe": "定位我",
@@ -95,5 +111,66 @@
     "workshop": "工作坊",
     "party": "派對",
     "other": "其他"
+  },
+  "profile": {
+    "eventsAttended": "參加過的活動",
+    "friends": "朋友",
+    "wantToGo": "想去",
+    "myEvents": "我的活動",
+    "datingProfile": "交友檔案",
+    "datingFilters": "交友篩選",
+    "notifications": "通知",
+    "settings": "設定",
+    "changePhoto": "更換照片",
+    "changePhotoMsg": "照片選擇器即將推出！",
+    "displayName": "顯示名稱",
+    "bio": "自我介紹",
+    "profileSaved": "個人檔案已儲存！",
+    "editProfile": "編輯個人檔案"
+  },
+  "settings": {
+    "language": "語言",
+    "pushNotifications": "推播通知",
+    "account": "帳號",
+    "email": "電子郵件",
+    "changePassword": "更改密碼",
+    "changePasswordMsg": "更改密碼功能即將推出！",
+    "logOut": "登出",
+    "deleteAccount": "刪除帳號",
+    "deleteAccountConfirm": "確定要刪除帳號嗎？此操作無法復原。",
+    "logOutConfirm": "確定要登出嗎？",
+    "english": "English",
+    "zhTW": "繁體中文"
+  },
+  "notifications": {
+    "title": "通知",
+    "markAllRead": "全部標為已讀",
+    "empty": "目前沒有通知"
+  },
+  "tickets": {
+    "upcoming": "即將到來",
+    "past": "過去",
+    "showQR": "顯示 QR",
+    "myTickets": "我的票券",
+    "ticketDetail": "票券詳情",
+    "qrCode": "QR Code",
+    "ticketType": "票種",
+    "price": "價格",
+    "purchaseDate": "購買日期",
+    "status": "狀態",
+    "navigateToVenue": "導航至場地",
+    "brightnessNote": "請提高螢幕亮度以便掃描",
+    "orderHistory": "訂單紀錄",
+    "orderDate": "日期",
+    "eventName": "活動",
+    "totalAmount": "總計",
+    "paymentStatus": "付款狀態",
+    "valid": "有效",
+    "used": "已使用",
+    "cancelled": "已取消",
+    "refunded": "已退款",
+    "paid": "已付款",
+    "pending": "待付款",
+    "failed": "失敗"
   }
 }

@@ -2,10 +2,10 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTranslation } from 'react-i18next';
 import HomeStack from './stacks/HomeStack';
+import DiscoverStack from './stacks/DiscoverStack';
+import TicketsStack from './stacks/TicketsStack';
+import ProfileStack from './stacks/ProfileStack';
 import MapScreen from '@/screens/map/MapScreen';
-import DiscoverScreen from '@/screens/discover/DiscoverScreen';
-import TicketsScreen from '@/screens/tickets/TicketsScreen';
-import ProfileScreen from '@/screens/profile/ProfileScreen';
 import { colors } from '@/theme';
 
 export type MainTabsParamList = {
@@ -34,10 +34,9 @@ export default function MainTabs() {
         component={HomeStack}
         options={{
           tabBarLabel: t('tabs.home'),
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, size }) =>
             // Placeholder icon — replace with actual icon library
-            undefined as any
-          ),
+            undefined as any,
         }}
       />
       <Tab.Screen
@@ -50,7 +49,7 @@ export default function MainTabs() {
       />
       <Tab.Screen
         name="DiscoverTab"
-        component={DiscoverScreen}
+        component={DiscoverStack}
         options={{
           tabBarLabel: t('tabs.discover'),
           tabBarIcon: ({ color, size }) => undefined as any,
@@ -58,7 +57,7 @@ export default function MainTabs() {
       />
       <Tab.Screen
         name="TicketsTab"
-        component={TicketsScreen}
+        component={TicketsStack}
         options={{
           tabBarLabel: t('tabs.tickets'),
           tabBarIcon: ({ color, size }) => undefined as any,
@@ -66,7 +65,7 @@ export default function MainTabs() {
       />
       <Tab.Screen
         name="ProfileTab"
-        component={ProfileScreen}
+        component={ProfileStack}
         options={{
           tabBarLabel: t('tabs.profile'),
           tabBarIcon: ({ color, size }) => undefined as any,
