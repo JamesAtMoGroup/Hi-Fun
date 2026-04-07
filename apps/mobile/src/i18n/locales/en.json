@@ -59,6 +59,31 @@
     "retry": "Retry",
     "error": "Error"
   },
+  "map": {
+    "locateMe": "Locate Me",
+    "allCategories": "All"
+  },
+  "eventDetail": {
+    "friendsGoing": "Friends Going",
+    "venue": "Venue",
+    "description": "Description",
+    "readMore": "Read more",
+    "readLess": "Read less",
+    "tickets": "Tickets",
+    "organizer": "Organizer",
+    "buyTickets": "Buy Tickets",
+    "visitTicketSite": "Visit Ticket Site",
+    "soldOut": "Sold Out",
+    "remaining": "remaining",
+    "uber": "Uber",
+    "navigate": "Navigate",
+    "verified": "Verified"
+  },
+  "interaction": {
+    "attending": "Attending",
+    "interested": "Interested",
+    "wantToGo": "Want to Go"
+  },
   "categories": {
     "nightclub": "Nightclub",
     "live_music": "Live Music",

@@ -59,6 +59,31 @@
     "retry": "重試",
     "error": "錯誤"
   },
+  "map": {
+    "locateMe": "定位我",
+    "allCategories": "全部"
+  },
+  "eventDetail": {
+    "friendsGoing": "朋友要去",
+    "venue": "地點",
+    "description": "說明",
+    "readMore": "展開更多",
+    "readLess": "收合",
+    "tickets": "票種",
+    "organizer": "主辦方",
+    "buyTickets": "購買票券",
+    "visitTicketSite": "前往購票網站",
+    "soldOut": "已售完",
+    "remaining": "剩餘",
+    "uber": "Uber",
+    "navigate": "導航",
+    "verified": "已認證"
+  },
+  "interaction": {
+    "attending": "參加",
+    "interested": "有興趣",
+    "wantToGo": "想去"
+  },
   "categories": {
     "nightclub": "夜店",
     "live_music": "演出",
