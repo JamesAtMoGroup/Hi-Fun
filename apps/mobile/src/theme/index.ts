@@ -1,7 +1,3 @@
-// ============================================================
-// FOMO App — Theme Constants
-// ============================================================
-
 export const colors = {
   primary: '#7C3AED',
   secondary: '#EC4899',
@@ -34,15 +30,15 @@ export const typography = {
   },
   body: {
     fontSize: 16,
-    fontWeight: 'normal' as const,
+    fontWeight: '400' as const,
   },
   caption: {
     fontSize: 14,
-    fontWeight: 'normal' as const,
+    fontWeight: '400' as const,
   },
   small: {
     fontSize: 12,
-    fontWeight: 'normal' as const,
+    fontWeight: '400' as const,
   },
 } as const;
 

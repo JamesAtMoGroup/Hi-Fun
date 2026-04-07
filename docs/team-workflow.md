@@ -118,17 +118,40 @@
 
 ## 進度追蹤
 
-| Phase | Agent | Status | Output |
-|-------|-------|--------|--------|
-| 1 | DB Architect | 🔄 In Progress | `docs/db-schema.sql` |
-| 1 | API Architect | 🔄 In Progress | `docs/api-spec.md` |
-| 1 | UI/UX Architect | 🔄 In Progress | `docs/ui-ux-architecture.md` |
-| 1 | Phase 1 Review | ⏳ Pending | — |
-| 2 | Backend Dev | ⏳ Pending | `server/` |
-| 2 | Frontend Core Dev | ⏳ Pending | `apps/mobile/` core screens |
-| 2 | Frontend Social Dev | ⏳ Pending | `apps/mobile/` social screens |
-| 2 | Integration Dev | ⏳ Pending | `apps/mobile/` services |
-| 3 | QA Lead | ⏳ Pending | `docs/qa-final-report.md` |
+### Phase 1: Architecture (COMPLETED)
+
+| Agent | Status | Output | QA |
+|-------|--------|--------|----|
+| DB Architect | ✅ Done | `docs/db-schema.sql` | 10/10 |
+| API Architect | ✅ Done | `docs/api-spec.md` (41 endpoints) | 10/10 |
+| UI/UX Architect | ✅ Done | `docs/ui-ux-architecture.md` (25+ screens) | 11/11 |
+| Phase 1 Review | ✅ Done | `docs/phase1-review.md` | 3 issues found, all resolved |
+
+### Phase 2 Batch 1: Foundation + Backend (COMPLETED)
+
+| Agent | Status | Output | QA |
+|-------|--------|--------|----|
+| 2A Backend Foundation | ✅ Done | Express server, auth, JWT, middleware (13 files) | 10/10 |
+| 2B DB Migrations | ✅ Done | 16 Knex migration files | 11/11 |
+| 2C Backend Events API | ✅ Done | Events routes, controllers, validators | 11/11 |
+| 2D Backend Social & Dating | ✅ Done | Social + Dating routes, controllers, validators | 11/11 |
+| 2F Frontend Foundation | ✅ Done | Expo setup, nav, theme, i18n, API client, auth store | 12/12 |
+
+### Phase 2 Batch 2: Screens + Remaining Backend (IN PROGRESS)
+
+| Agent | Status | Output |
+|-------|--------|--------|
+| 2E Backend Tickets/Orders/Notifications | ⏳ Pending | `server/src/routes/` |
+| 2G Frontend Home & Search | ⏳ Pending | `apps/mobile/src/screens/home/` |
+| 2H Frontend Map & EventDetail | ⏳ Pending | `apps/mobile/src/screens/map/` |
+| 2I Frontend Discover & Social | ⏳ Pending | `apps/mobile/src/screens/discover/` |
+| 2J Frontend Profile & Tickets | ⏳ Pending | `apps/mobile/src/screens/profile/` |
+
+### Phase 3: QA
+
+| Agent | Status | Output |
+|-------|--------|--------|
+| QA Lead | ⏳ Pending | `docs/qa-final-report.md` |
 
 ---
 

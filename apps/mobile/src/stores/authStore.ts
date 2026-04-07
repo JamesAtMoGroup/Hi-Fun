@@ -1,9 +1,20 @@
 import { create } from 'zustand';
 import * as SecureStore from 'expo-secure-store';
 import api from '@/services/api';
-import type { User } from '@fomo/shared/src/types';
 
-export interface AuthState {
+// Using the shared User type structure
+interface User {
+  id: string;
+  displayName: string;
+  email: string;
+  avatarUrl?: string;
+  bio?: string;
+  role: 'user' | 'merchant' | 'admin';
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface AuthState {
   user: User | null;
   accessToken: string | null;
   refreshToken: string | null;
@@ -75,23 +86,25 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     try {
       await api.post('/auth/logout');
     } catch {
-      // Proceed with local logout even if API call fails
+      // Logout API failure is non-blocking
+    } finally {
+      await SecureStore.deleteItemAsync('accessToken');
+      await SecureStore.deleteItemAsync('refreshToken');
+
+      set({
+        user: null,
+        accessToken: null,
+        refreshToken: null,
+        isAuthenticated: false,
+        isLoading: false,
+      });
     }
-
-    await SecureStore.deleteItemAsync('accessToken');
-    await SecureStore.deleteItemAsync('refreshToken');
-
-    set({
-      user: null,
-      accessToken: null,
-      refreshToken: null,
-      isAuthenticated: false,
-      isLoading: false,
-    });
   },
 
   setTokens: (access: string, refresh: string) => {
     set({ accessToken: access, refreshToken: refresh });
+    SecureStore.setItemAsync('accessToken', access);
+    SecureStore.setItemAsync('refreshToken', refresh);
   },
 
   loadStoredAuth: async () => {
@@ -117,7 +130,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         set({ isLoading: false });
       }
     } catch {
-      // Token expired or invalid — clear stored tokens
+      // Token expired or invalid — clear stored auth
       await SecureStore.deleteItemAsync('accessToken');
       await SecureStore.deleteItemAsync('refreshToken');
       set({
