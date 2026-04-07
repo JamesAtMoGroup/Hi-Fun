@@ -14,8 +14,8 @@
     "forgotPassword": "忘記密碼",
     "displayName": "顯示名稱",
     "confirmPassword": "確認密碼",
-    "welcome": "歡迎",
-    "onboarding": "設定你的個人資料"
+    "welcome": "歡迎來到 FOMO",
+    "skip": "略過"
   },
   "events": {
     "today": "今天",
@@ -23,14 +23,27 @@
     "thisWeekend": "本週末",
     "trending": "熱門活動",
     "nearby": "附近活動",
-    "friendsGoing": "朋友要去"
+    "friendsGoing": "朋友要去",
+    "hotTonight": "今晚最熱",
+    "buyTickets": "購買票券",
+    "free": "免費",
+    "details": "活動詳情",
+    "attending": "參加",
+    "interested": "有興趣",
+    "wantToGo": "想去"
   },
   "dating": {
     "gender": "性別",
     "role": "角色",
     "age": "年齡",
     "discover": "探索",
-    "filter": "篩選"
+    "filter": "篩選",
+    "bio": "自我介紹",
+    "photos": "照片",
+    "male": "男性",
+    "female": "女性",
+    "nonBinary": "非二元",
+    "other": "其他"
   },
   "common": {
     "confirm": "確認",
@@ -38,7 +51,13 @@
     "save": "儲存",
     "loading": "載入中",
     "noMore": "沒有更多",
-    "search": "搜尋"
+    "search": "搜尋",
+    "delete": "刪除",
+    "edit": "編輯",
+    "done": "完成",
+    "back": "返回",
+    "retry": "重試",
+    "error": "錯誤"
   },
   "categories": {
     "nightclub": "夜店",

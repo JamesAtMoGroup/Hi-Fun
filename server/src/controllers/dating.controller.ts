@@ -141,61 +141,20 @@ export async function discoverPeople(req: Request, res: Response): Promise<void>
     ? formatDatingFilters(filtersRow)
     : DEFAULT_DATING_FILTERS;
 
-  // Build filter conditions
-  const conditions: string[] = [];
-  const params: any[] = [];
+  // ── Build dynamic SQL fragments and ordered params ──
+  const allParams: any[] = [];
 
-  // Base: show_on_dating = true, exclude self
-  conditions.push('dp.show_on_dating = true');
-  conditions.push('dp.user_id != ?');
-  params.push(userId);
-
-  // Gender filter
-  if (filters.genders.length > 0) {
-    conditions.push(`dp.gender IN (${filters.genders.map(() => '?').join(', ')})`);
-    params.push(...filters.genders);
-  }
-
-  // Role filter
-  if (filters.roles.length > 0) {
-    conditions.push(`dp.role IN (${filters.roles.map(() => '?').join(', ')})`);
-    params.push(...filters.roles);
-  }
-
-  // Age filter
-  conditions.push('dp.age >= ?');
-  params.push(filters.ageRange.min);
-  conditions.push('dp.age <= ?');
-  params.push(filters.ageRange.max);
-
-  // Distance filter using Haversine formula (PostGIS not assumed)
-  // Distance in km using lat/lng
-  const distanceExpr = `
+  // SELECT: distance via Haversine
+  const distSelectExpr = `
     (6371 * acos(
       LEAST(1.0, cos(radians(?)) * cos(radians(dp.latitude)) *
       cos(radians(dp.longitude) - radians(?)) +
       sin(radians(?)) * sin(radians(dp.latitude)))
-    ))
+    )) AS distance
   `;
-  params.push(lat, lng, lat);
+  allParams.push(lat, lng, lat);
 
-  if (filters.maxDistance > 0) {
-    conditions.push(`${distanceExpr} <= ?`);
-    params.push(lat, lng, lat); // repeated for the WHERE clause copy
-    params.push(filters.maxDistance);
-  }
-
-  // Event filter
-  let eventJoin = '';
-  if (eventId) {
-    eventJoin = 'JOIN event_interactions ei_filter ON ei_filter.user_id = dp.user_id AND ei_filter.event_id = ?';
-    params.push(eventId);
-  }
-
-  // Build the query for distance in SELECT
-  const selectDistanceParams = [lat, lng, lat];
-
-  // Mutual friends subquery
+  // SELECT: mutual friends subquery
   const mutualFriendsSubquery = `
     (SELECT COUNT(*) FROM friendships f1
      JOIN friendships f2 ON (
@@ -205,10 +164,11 @@ export async function discoverPeople(req: Request, res: Response): Promise<void>
      WHERE f1.status = 'accepted'
        AND f2.status = 'accepted'
        AND (f1.user_id = dp.user_id OR f1.friend_id = dp.user_id)
-       AND (f2.user_id = ? OR f2.friend_id = ?))
+       AND (f2.user_id = ? OR f2.friend_id = ?)) AS mutual_friend_count
   `;
+  allParams.push(userId, userId, userId);
 
-  // Shared events subquery
+  // SELECT: shared events subquery
   const sharedEventsSubquery = `
     (SELECT COUNT(DISTINCT ei1.event_id)
      FROM event_interactions ei1
@@ -216,70 +176,51 @@ export async function discoverPeople(req: Request, res: Response): Promise<void>
      WHERE ei1.user_id = dp.user_id
        AND ei2.user_id = ?
        AND ei1.type IN ('attending', 'interested')
-       AND ei2.type IN ('attending', 'interested'))
+       AND ei2.type IN ('attending', 'interested')) AS shared_event_count
   `;
-
-  // Reassemble with correct param ordering
-  // We need to carefully construct the full query and params array
-  const allParams: any[] = [];
-
-  // SELECT distance params
-  allParams.push(lat, lng, lat);
-  // mutual friends params
-  allParams.push(userId, userId, userId);
-  // shared events params
   allParams.push(userId);
-  // event join param
+
+  // JOIN: event filter (optional)
+  let eventJoinClause = '';
   if (eventId) {
+    eventJoinClause = 'JOIN event_interactions ei_filter ON ei_filter.user_id = dp.user_id AND ei_filter.event_id = ?';
     allParams.push(eventId);
   }
-  // WHERE conditions params
-  allParams.push(userId); // exclude self
 
+  // WHERE: exclude self
+  allParams.push(userId);
+
+  // WHERE: gender filter
+  let genderWhere = '';
   if (filters.genders.length > 0) {
+    genderWhere = `AND dp.gender IN (${filters.genders.map(() => '?').join(', ')})`;
     allParams.push(...filters.genders);
   }
+
+  // WHERE: role filter
+  let roleWhere = '';
   if (filters.roles.length > 0) {
+    roleWhere = `AND dp.role IN (${filters.roles.map(() => '?').join(', ')})`;
     allParams.push(...filters.roles);
   }
 
+  // WHERE: age range
   allParams.push(filters.ageRange.min);
   allParams.push(filters.ageRange.max);
 
+  // WHERE: distance filter
+  let distWhereExpr = '';
   if (filters.maxDistance > 0) {
-    allParams.push(lat, lng, lat, filters.maxDistance);
-  }
-
-  // pagination
-  allParams.push(Number(pageSize), offset);
-
-  const distSelectExpr = `
-    (6371 * acos(
+    distWhereExpr = `AND (6371 * acos(
       LEAST(1.0, cos(radians(?)) * cos(radians(dp.latitude)) *
       cos(radians(dp.longitude) - radians(?)) +
       sin(radians(?)) * sin(radians(dp.latitude)))
-    )) AS distance
-  `;
+    )) <= ?`;
+    allParams.push(lat, lng, lat, filters.maxDistance);
+  }
 
-  const distWhereExpr = filters.maxDistance > 0
-    ? `AND (6371 * acos(
-        LEAST(1.0, cos(radians(?)) * cos(radians(dp.latitude)) *
-        cos(radians(dp.longitude) - radians(?)) +
-        sin(radians(?)) * sin(radians(dp.latitude)))
-      )) <= ?`
-    : '';
-
-  const genderWhere = filters.genders.length > 0
-    ? `AND dp.gender IN (${filters.genders.map(() => '?').join(', ')})`
-    : '';
-
-  const roleWhere = filters.roles.length > 0
-    ? `AND dp.role IN (${filters.roles.map(() => '?').join(', ')})`
-    : '';
-
-  const eventJoinClause = eventId
-    ? 'JOIN event_interactions ei_filter ON ei_filter.user_id = dp.user_id AND ei_filter.event_id = ?'
-    : '';
+  // LIMIT / OFFSET
+  allParams.push(Number(pageSize), offset);
 
   const sql = `
     SELECT
@@ -291,8 +232,8 @@ export async function discoverPeople(req: Request, res: Response): Promise<void>
       dp.bio,
       dp.photos,
       ${distSelectExpr},
-      ${mutualFriendsSubquery} AS mutual_friend_count,
-      ${sharedEventsSubquery} AS shared_event_count,
+      ${mutualFriendsSubquery},
+      ${sharedEventsSubquery},
       COUNT(*) OVER() AS total_count
     FROM user_dating_profiles dp
     JOIN users u ON u.id = dp.user_id
@@ -312,7 +253,7 @@ export async function discoverPeople(req: Request, res: Response): Promise<void>
   const rows = result.rows || result;
   const total = rows.length > 0 ? Number(rows[0].total_count) : 0;
 
-  // Map to DiscoverPerson — never expose sensitive data
+  // Map to DiscoverPerson — NEVER expose sensitive data (email, filters, interestedIn)
   const items = rows.map((row: any) => ({
     userId: row.user_id,
     displayName: row.display_name,

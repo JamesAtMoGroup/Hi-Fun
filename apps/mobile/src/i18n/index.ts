@@ -1,7 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import * as Localization from 'expo-localization';
-
+import { getLocales } from 'expo-localization';
 import en from './locales/en.json';
 import zhTW from './locales/zh-TW.json';
 
@@ -10,20 +9,22 @@ const resources = {
   'zh-TW': { translation: zhTW },
 };
 
-// Detect device locale, fallback to 'en'
-const deviceLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en';
+const deviceLanguage = getLocales()[0]?.languageTag ?? 'en';
 
-// Map locale to supported language
-function getLanguage(locale: string): string {
-  if (locale.startsWith('zh')) {
+// Determine initial language: prefer zh-TW if device is any Chinese variant
+const getInitialLanguage = (): string => {
+  if (deviceLanguage.startsWith('zh')) {
     return 'zh-TW';
   }
+  if (Object.keys(resources).includes(deviceLanguage)) {
+    return deviceLanguage;
+  }
   return 'en';
-}
+};
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: getLanguage(deviceLocale),
+  lng: getInitialLanguage(),
   fallbackLng: 'en',
   interpolation: {
     escapeValue: false,

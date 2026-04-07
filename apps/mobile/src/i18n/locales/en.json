@@ -11,11 +11,11 @@
     "register": "Register",
     "email": "Email",
     "password": "Password",
-    "forgotPassword": "Forgot password?",
+    "forgotPassword": "Forgot Password",
     "displayName": "Display Name",
     "confirmPassword": "Confirm Password",
-    "welcome": "Welcome",
-    "onboarding": "Set Up Your Profile"
+    "welcome": "Welcome to FOMO",
+    "skip": "Skip"
   },
   "events": {
     "today": "Today",
@@ -23,22 +23,41 @@
     "thisWeekend": "This Weekend",
     "trending": "Trending Events",
     "nearby": "Nearby Events",
-    "friendsGoing": "Friends Are Going"
+    "friendsGoing": "Friends Going",
+    "hotTonight": "Hot Tonight",
+    "buyTickets": "Buy Tickets",
+    "free": "Free",
+    "details": "Event Details",
+    "attending": "Attending",
+    "interested": "Interested",
+    "wantToGo": "Want to Go"
   },
   "dating": {
     "gender": "Gender",
     "role": "Role",
     "age": "Age",
     "discover": "Discover",
-    "filter": "Filter"
+    "filter": "Filter",
+    "bio": "Bio",
+    "photos": "Photos",
+    "male": "Male",
+    "female": "Female",
+    "nonBinary": "Non-binary",
+    "other": "Other"
   },
   "common": {
     "confirm": "Confirm",
     "cancel": "Cancel",
     "save": "Save",
-    "loading": "Loading...",
-    "noMore": "No more items",
-    "search": "Search"
+    "loading": "Loading",
+    "noMore": "No More",
+    "search": "Search",
+    "delete": "Delete",
+    "edit": "Edit",
+    "done": "Done",
+    "back": "Back",
+    "retry": "Retry",
+    "error": "Error"
   },
   "categories": {
     "nightclub": "Nightclub",
