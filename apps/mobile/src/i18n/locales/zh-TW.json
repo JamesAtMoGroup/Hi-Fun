@@ -1,0 +1,55 @@
+{
+  "tabs": {
+    "home": "首頁",
+    "map": "地圖",
+    "discover": "探索",
+    "tickets": "票券",
+    "profile": "我的"
+  },
+  "auth": {
+    "login": "登入",
+    "register": "註冊",
+    "email": "電子郵件",
+    "password": "密碼",
+    "forgotPassword": "忘記密碼",
+    "displayName": "顯示名稱",
+    "confirmPassword": "確認密碼",
+    "welcome": "歡迎",
+    "onboarding": "設定你的個人資料"
+  },
+  "events": {
+    "today": "今天",
+    "thisWeek": "本週",
+    "thisWeekend": "本週末",
+    "trending": "熱門活動",
+    "nearby": "附近活動",
+    "friendsGoing": "朋友要去"
+  },
+  "dating": {
+    "gender": "性別",
+    "role": "角色",
+    "age": "年齡",
+    "discover": "探索",
+    "filter": "篩選"
+  },
+  "common": {
+    "confirm": "確認",
+    "cancel": "取消",
+    "save": "儲存",
+    "loading": "載入中",
+    "noMore": "沒有更多",
+    "search": "搜尋"
+  },
+  "categories": {
+    "nightclub": "夜店",
+    "live_music": "演出",
+    "market": "市集",
+    "sports": "運動",
+    "exhibition": "展覽",
+    "food_drink": "美食",
+    "outdoor": "戶外",
+    "workshop": "工作坊",
+    "party": "派對",
+    "other": "其他"
+  }
+}

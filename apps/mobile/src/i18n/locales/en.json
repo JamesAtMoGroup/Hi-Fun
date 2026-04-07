@@ -1,0 +1,55 @@
+{
+  "tabs": {
+    "home": "Home",
+    "map": "Map",
+    "discover": "Discover",
+    "tickets": "Tickets",
+    "profile": "Profile"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "displayName": "Display Name",
+    "confirmPassword": "Confirm Password",
+    "welcome": "Welcome",
+    "onboarding": "Set Up Your Profile"
+  },
+  "events": {
+    "today": "Today",
+    "thisWeek": "This Week",
+    "thisWeekend": "This Weekend",
+    "trending": "Trending Events",
+    "nearby": "Nearby Events",
+    "friendsGoing": "Friends Are Going"
+  },
+  "dating": {
+    "gender": "Gender",
+    "role": "Role",
+    "age": "Age",
+    "discover": "Discover",
+    "filter": "Filter"
+  },
+  "common": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "save": "Save",
+    "loading": "Loading...",
+    "noMore": "No more items",
+    "search": "Search"
+  },
+  "categories": {
+    "nightclub": "Nightclub",
+    "live_music": "Live Music",
+    "market": "Market",
+    "sports": "Sports",
+    "exhibition": "Exhibition",
+    "food_drink": "Food & Drink",
+    "outdoor": "Outdoor",
+    "workshop": "Workshop",
+    "party": "Party",
+    "other": "Other"
+  }
+}
