@@ -137,21 +137,21 @@
 | 2D Backend Social & Dating | ✅ Done | Social + Dating routes, controllers, validators | 11/11 |
 | 2F Frontend Foundation | ✅ Done | Expo setup, nav, theme, i18n, API client, auth store | 12/12 |
 
-### Phase 2 Batch 2: Screens + Remaining Backend (IN PROGRESS)
+### Phase 2 Batch 2: Screens + Remaining Backend (COMPLETED)
+
+| Agent | Status | Output | QA |
+|-------|--------|--------|----|
+| 2E Backend Tickets/Orders/Notifications | ✅ Done | Auth, tickets, orders, coupons, notifications, users | 10/10 |
+| 2G Frontend Home & Search | ✅ Done | HomeScreen, SearchScreen, CategoryList + components | 10/10 |
+| 2H Frontend Map & EventDetail | ✅ Done | MapScreen, EventDetailScreen + deeplinks | 10/10 |
+| 2I Frontend Discover & Social | ✅ Done | DiscoverScreen, PersonDetail, Friends, Activity | 11/11 |
+| 2J Frontend Profile & Tickets | ✅ Done | Profile, Settings, Dating, Tickets, Notifications | 13/13 |
+
+### Phase 3: QA (COMPLETED)
 
 | Agent | Status | Output |
 |-------|--------|--------|
-| 2E Backend Tickets/Orders/Notifications | ⏳ Pending | `server/src/routes/` |
-| 2G Frontend Home & Search | ⏳ Pending | `apps/mobile/src/screens/home/` |
-| 2H Frontend Map & EventDetail | ⏳ Pending | `apps/mobile/src/screens/map/` |
-| 2I Frontend Discover & Social | ⏳ Pending | `apps/mobile/src/screens/discover/` |
-| 2J Frontend Profile & Tickets | ⏳ Pending | `apps/mobile/src/screens/profile/` |
-
-### Phase 3: QA
-
-| Agent | Status | Output |
-|-------|--------|--------|
-| QA Lead | ⏳ Pending | `docs/qa-final-report.md` |
+| QA Lead | ✅ Done | `docs/qa-final-report.md` — 1 blocking issue found and fixed |
 
 ---
 
