@@ -30,7 +30,8 @@
     "details": "Event Details",
     "attending": "Attending",
     "interested": "Interested",
-    "wantToGo": "Want to Go"
+    "wantToGo": "Want to Go",
+    "past": "Past"
   },
   "dating": {
     "gender": "Gender",
@@ -38,12 +39,26 @@
     "age": "Age",
     "discover": "Discover",
     "filter": "Filter",
-    "bio": "Bio",
+    "bio": "Dating Bio",
     "photos": "Photos",
     "male": "Male",
     "female": "Female",
     "nonBinary": "Non-binary",
-    "other": "Other"
+    "other": "Other",
+    "top": "Top",
+    "bottom": "Bottom",
+    "vers": "Vers",
+    "versTop": "Vers Top",
+    "versBottom": "Vers Bottom",
+    "side": "Side",
+    "showOnDiscover": "Show me on Discover",
+    "addPhoto": "Add Photo",
+    "datingFilters": "Dating Filters",
+    "interestedInGenders": "Interested in Genders",
+    "interestedInRoles": "Interested in Roles",
+    "ageRange": "Age Range",
+    "maxDistance": "Max Distance",
+    "kmUnit": "km"
   },
   "common": {
     "confirm": "Confirm",
@@ -57,7 +72,8 @@
     "done": "Done",
     "back": "Back",
     "retry": "Retry",
-    "error": "Error"
+    "error": "Error",
+    "appVersion": "App Version"
   },
   "map": {
     "locateMe": "Locate Me",
@@ -95,5 +111,66 @@
     "workshop": "Workshop",
     "party": "Party",
     "other": "Other"
+  },
+  "profile": {
+    "eventsAttended": "Events Attended",
+    "friends": "Friends",
+    "wantToGo": "Want to Go",
+    "myEvents": "My Events",
+    "datingProfile": "Dating Profile",
+    "datingFilters": "Dating Filters",
+    "notifications": "Notifications",
+    "settings": "Settings",
+    "changePhoto": "Change Photo",
+    "changePhotoMsg": "Photo picker coming soon!",
+    "displayName": "Display Name",
+    "bio": "Bio",
+    "profileSaved": "Profile saved successfully!",
+    "editProfile": "Edit Profile"
+  },
+  "settings": {
+    "language": "Language",
+    "pushNotifications": "Push Notifications",
+    "account": "Account",
+    "email": "Email",
+    "changePassword": "Change Password",
+    "changePasswordMsg": "Password change coming soon!",
+    "logOut": "Log Out",
+    "deleteAccount": "Delete Account",
+    "deleteAccountConfirm": "Are you sure you want to delete your account? This action cannot be undone.",
+    "logOutConfirm": "Are you sure you want to log out?",
+    "english": "English",
+    "zhTW": "繁體中文"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAllRead": "Mark All Read",
+    "empty": "No notifications yet"
+  },
+  "tickets": {
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "showQR": "Show QR",
+    "myTickets": "My Tickets",
+    "ticketDetail": "Ticket Detail",
+    "qrCode": "QR Code",
+    "ticketType": "Ticket Type",
+    "price": "Price",
+    "purchaseDate": "Purchase Date",
+    "status": "Status",
+    "navigateToVenue": "Navigate to Venue",
+    "brightnessNote": "Increase brightness for scanning",
+    "orderHistory": "Order History",
+    "orderDate": "Date",
+    "eventName": "Event",
+    "totalAmount": "Total",
+    "paymentStatus": "Payment Status",
+    "valid": "Valid",
+    "used": "Used",
+    "cancelled": "Cancelled",
+    "refunded": "Refunded",
+    "paid": "Paid",
+    "pending": "Pending",
+    "failed": "Failed"
   }
 }
