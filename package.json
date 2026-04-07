@@ -1,0 +1,18 @@
+{
+  "name": "fomo-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "FOMO — Don't Miss Out! 即時×社交 城市活動入口",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "server"
+  ],
+  "scripts": {
+    "mobile": "yarn workspace @fomo/mobile start",
+    "server": "yarn workspace @fomo/server dev",
+    "merchant": "yarn workspace @fomo/merchant-web dev",
+    "db:migrate": "yarn workspace @fomo/server migrate",
+    "db:seed": "yarn workspace @fomo/server seed"
+  }
+}
