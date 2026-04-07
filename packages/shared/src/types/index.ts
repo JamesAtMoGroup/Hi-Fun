@@ -181,6 +181,61 @@ export interface PromotionPackage {
   features: string[];
 }
 
+// ─── Dating ─────────────────────────────────────────────────
+export type Gender = 'male' | 'female' | 'non_binary' | 'other';
+
+export type DatingRole =
+  | 'top'
+  | 'bottom'
+  | 'vers'
+  | 'vers_top'
+  | 'vers_bottom'
+  | 'side'
+  | 'other';
+
+export interface DatingProfile {
+  userId: string;
+  gender: Gender;
+  role: DatingRole;
+  interestedInGenders: Gender[];
+  interestedInRoles: DatingRole[];
+  bio: string;
+  photos: string[];
+  showOnDating: boolean;
+  age: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface DatingFilters {
+  genders: Gender[];
+  roles: DatingRole[];
+  ageRange: { min: number; max: number };
+  maxDistance: number; // km
+}
+
+export interface DiscoverPerson {
+  userId: string;
+  displayName: string;
+  age: number;
+  gender: Gender;
+  role: DatingRole;
+  bio: string;
+  photos: string[];
+  distance: number;         // km from requester
+  mutualFriendCount: number;
+  sharedEventCount: number;  // events both are attending/interested
+}
+
+// ─── Social ─────────────────────────────────────────────────
+export interface FriendActivity {
+  id: string;
+  user: { id: string; displayName: string; avatarUrl?: string };
+  type: 'attending' | 'interested' | 'want_to_go';
+  event: EventSummary;
+  createdAt: string;
+}
+
 // ─── Coupon ──────────────────────────────────────────────────
 export interface Coupon {
   id: string;
