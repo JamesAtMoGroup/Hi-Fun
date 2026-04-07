@@ -1,7 +1,17 @@
 import knex from 'knex';
-import knexConfig from '../../knexfile';
 import { config } from './index';
 
-const environment = config.nodeEnv === 'production' ? 'production' : 'development';
+const knexConfig = {
+  client: 'pg',
+  connection: config.databaseUrl,
+  pool: { min: 2, max: 10 },
+  migrations: {
+    directory: '../migrations',
+    extension: 'ts',
+  },
+  seeds: {
+    directory: '../seeds',
+  },
+};
 
-export const db = knex(knexConfig[environment]);
+export const db = knex(knexConfig);

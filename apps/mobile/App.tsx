@@ -40,7 +40,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <QueryClientProvider client={queryClient}>
-        <NavigationContainer linking={linking}>
+        <NavigationContainer linking={linking as any}>
           <RootNavigator />
         </NavigationContainer>
       </QueryClientProvider>
