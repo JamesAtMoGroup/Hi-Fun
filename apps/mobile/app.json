@@ -2,8 +2,8 @@
   "expo": {
     "name": "FOMO",
     "slug": "fomo",
-    "scheme": "fomo",
     "version": "1.0.0",
+    "scheme": "fomo",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -14,23 +14,15 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.fomo.app",
-      "config": {
-        "googleMapsApiKey": ""
-      }
+      "supportsTablet": false,
+      "bundleIdentifier": "com.fomo.app"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#7C3AED"
       },
-      "package": "com.fomo.app",
-      "config": {
-        "googleMaps": {
-          "apiKey": ""
-        }
-      }
+      "package": "com.fomo.app"
     },
     "plugins": [
       "expo-localization",

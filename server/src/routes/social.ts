@@ -1,8 +1,11 @@
 import { Router } from 'express';
 import { requireAuth } from '../middleware/auth';
-import { validate } from '../middleware/validate';
+import { validate, validateQuery } from '../middleware/validate';
 import {
   sendFriendRequestSchema,
+  listPendingRequestsSchema,
+  listFriendsSchema,
+  friendActivitySchema,
 } from '../validators/social.validator';
 import {
   listFriends,
@@ -17,13 +20,13 @@ import {
 const router = Router();
 
 // GET /friends — list accepted friends
-router.get('/friends', requireAuth, listFriends);
+router.get('/friends', requireAuth, validateQuery(listFriendsSchema), listFriends);
 
 // POST /friends/requests — send friend request
 router.post('/friends/requests', requireAuth, validate(sendFriendRequestSchema), sendFriendRequest);
 
 // GET /friends/requests — list pending requests (direction=incoming|outgoing)
-router.get('/friends/requests', requireAuth, listPendingRequests);
+router.get('/friends/requests', requireAuth, validateQuery(listPendingRequestsSchema), listPendingRequests);
 
 // PUT /friends/requests/:requestId/accept — accept friend request
 router.put('/friends/requests/:requestId/accept', requireAuth, acceptFriendRequest);
@@ -35,6 +38,6 @@ router.put('/friends/requests/:requestId/reject', requireAuth, rejectFriendReque
 router.delete('/friends/:userId', requireAuth, removeFriend);
 
 // GET /friends/activity — friend activity feed
-router.get('/friends/activity', requireAuth, friendActivity);
+router.get('/friends/activity', requireAuth, validateQuery(friendActivitySchema), friendActivity);
 
 export default router;

@@ -14,18 +14,7 @@ export async function listFriends(req: Request, res: Response): Promise<void> {
 
   const offset = (Number(page) - 1) * Number(pageSize);
 
-  let query = db('friendships as f')
-    .join('users as u', function () {
-      this.on(db.raw('CASE WHEN f.user_id = ? THEN f.friend_id ELSE f.user_id END', [userId]))
-        .onVal('u.id', db.raw('??', ['u.id']));
-    })
-    .where('f.status', 'accepted')
-    .andWhere(function () {
-      this.where('f.user_id', userId).orWhere('f.friend_id', userId);
-    });
-
-  // Rewrite the join more simply using raw
-  query = db.raw(`
+  const query = db.raw(`
     SELECT u.id, u.display_name, u.email, u.avatar_url, u.bio, u.role, u.created_at, u.updated_at,
            COUNT(*) OVER() AS total_count
     FROM friendships f

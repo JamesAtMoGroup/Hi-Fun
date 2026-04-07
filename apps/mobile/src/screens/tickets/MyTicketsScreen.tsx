@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function DiscoverScreen() {
+export default function MyTicketsScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>DiscoverScreen</Text>
+      <Text style={styles.text}>MyTicketsScreen</Text>
     </View>
   );
 }

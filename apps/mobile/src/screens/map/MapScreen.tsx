@@ -10,6 +10,6 @@ export default function MapScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  text: { fontSize: 18, fontWeight: '600' },
+  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFFFFF' },
+  text: { fontSize: 20, fontWeight: '600', color: '#111827' },
 });
