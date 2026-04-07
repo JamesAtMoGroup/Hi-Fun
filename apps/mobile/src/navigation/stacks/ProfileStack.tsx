@@ -6,6 +6,8 @@ import EditProfileScreen from '@/screens/profile/EditProfileScreen';
 import DatingProfileEditScreen from '@/screens/profile/DatingProfileEditScreen';
 import DatingFilterScreen from '@/screens/profile/DatingFilterScreen';
 import MyEventsScreen from '@/screens/profile/MyEventsScreen';
+import FriendsListScreen from '@/screens/social/FriendsListScreen';
+import FriendActivityScreen from '@/screens/social/FriendActivityScreen';
 import NotificationsScreen from '@/screens/profile/NotificationsScreen';
 import SettingsScreen from '@/screens/profile/SettingsScreen';
 
@@ -16,6 +18,7 @@ export type ProfileStackParamList = {
   DatingFilter: undefined;
   MyEvents: undefined;
   FriendsList: undefined;
+  FriendActivity: undefined;
   Notifications: undefined;
   Settings: undefined;
 };
@@ -36,6 +39,8 @@ export default function ProfileStack() {
       <Stack.Screen name="DatingProfileEdit" component={DatingProfileEditScreen} />
       <Stack.Screen name="DatingFilter" component={DatingFilterScreen} />
       <Stack.Screen name="MyEvents" component={MyEventsScreen} />
+      <Stack.Screen name="FriendsList" component={FriendsListScreen} />
+      <Stack.Screen name="FriendActivity" component={FriendActivityScreen} />
       <Stack.Screen name="Notifications" component={NotificationsScreen} />
       <Stack.Screen name="Settings" component={SettingsScreen} />
     </Stack.Navigator>
