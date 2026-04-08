@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -77,6 +78,7 @@ function formatDate(iso: string): string {
 export default function MyTicketsScreen() {
   const { t } = useTranslation();
   const navigation = useNavigation<Nav>();
+  const insets = useSafeAreaInsets();
   const [activeIndex, setActiveIndex] = useState(0);
 
   const segments = [t('tickets.upcoming'), t('tickets.past')];
@@ -131,7 +133,7 @@ export default function MyTicketsScreen() {
   );
 
   return (
-    <View className="flex-1 bg-white">
+    <View className="flex-1 bg-white" style={{ paddingTop: insets.top }}>
       <View className="flex-row items-center justify-between px-4 pt-6 pb-2">
         <Text className="text-xl font-bold text-gray-900">
           {t('tickets.myTickets')}

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import MapView, { Marker, PROVIDER_GOOGLE, Region } from 'react-native-maps';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
@@ -60,6 +61,7 @@ type MapTabNavProp = NativeStackNavigationProp<{
 
 export default function MapScreen() {
   const { t } = useTranslation();
+  const insets = useSafeAreaInsets();
   const mapRef = useRef<MapView>(null);
   const [region, setRegion] = useState<Region>(DEFAULT_MAP_CENTER);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -161,7 +163,7 @@ export default function MapScreen() {
       </MapView>
 
       {/* Category filter chips - floating top */}
-      <View className="absolute left-0 right-0 top-12">
+      <View className="absolute left-0 right-0" style={{ top: insets.top + 8 }}>
         <View className="mx-2 flex-row flex-wrap">
           <View className="w-full">
             <View className="flex-row">

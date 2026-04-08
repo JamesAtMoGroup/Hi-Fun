@@ -7,6 +7,7 @@ import {
   ScrollView,
   ActivityIndicator,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -22,6 +23,7 @@ type Nav = NativeStackNavigationProp<HomeStackParamList>;
 export default function HomeScreen() {
   const navigation = useNavigation<Nav>();
   const { t } = useTranslation();
+  const insets = useSafeAreaInsets();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const { data: trendingEvents, isLoading: trendingLoading } = useTrendingEvents();
@@ -153,7 +155,7 @@ export default function HomeScreen() {
   );
 
   return (
-    <View className="flex-1 bg-white">
+    <View className="flex-1 bg-white" style={{ paddingTop: insets.top }}>
       <FlatList
         data={nearbyEvents}
         keyExtractor={(item) => `nearby-${item.id}`}
