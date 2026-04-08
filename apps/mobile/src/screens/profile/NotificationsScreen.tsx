@@ -94,13 +94,13 @@ export default function NotificationsScreen() {
   }, []);
 
   return (
-    <View className="flex-1 bg-white">
+    <View className="flex-1 bg-background">
       <View className="flex-row items-center justify-between px-4 pt-6 pb-2">
-        <Text className="text-xl font-bold text-gray-900">
+        <Text className="text-xl font-bold text-white">
           {t('notifications.title')}
         </Text>
         <TouchableOpacity onPress={markAllRead}>
-          <Text className="text-purple-600 text-sm font-medium">
+          <Text className="text-primary text-sm font-medium">
             {t('notifications.markAllRead')}
           </Text>
         </TouchableOpacity>

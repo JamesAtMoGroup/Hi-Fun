@@ -70,10 +70,10 @@ export default function HomeScreen() {
         {/* Search Bar */}
         <TouchableOpacity
           onPress={() => navigation.navigate('Search')}
-          className="mx-4 mt-4 flex-row items-center rounded-xl bg-gray-100 px-4 py-3"
+          className="mx-4 mt-4 flex-row items-center rounded-xl bg-surface px-4 py-3"
         >
-          <Text className="mr-2 text-gray-400">🔍</Text>
-          <Text className="flex-1 text-sm text-gray-400">
+          <Text className="mr-2 text-text-muted">🔍</Text>
+          <Text className="flex-1 text-sm text-text-muted">
             {t('home.searchPlaceholder', 'Search events, venues...')}
           </Text>
         </TouchableOpacity>
@@ -85,7 +85,7 @@ export default function HomeScreen() {
 
         {/* Hot Tonight */}
         <View className="mt-4">
-          <Text className="px-4 text-xl font-bold text-gray-900">
+          <Text className="px-4 text-xl font-bold text-white">
             {t('home.hotTonight', 'Hot Tonight 🔥')}
           </Text>
           {trendingLoading ? (
@@ -104,7 +104,7 @@ export default function HomeScreen() {
 
         {/* Friends Are Going */}
         <View className="mt-6">
-          <Text className="px-4 text-xl font-bold text-gray-900">
+          <Text className="px-4 text-xl font-bold text-white">
             {t('home.friendsAreGoing', 'Friends Are Going 👫')}
           </Text>
           <FlatList
@@ -117,17 +117,17 @@ export default function HomeScreen() {
               <TouchableOpacity
                 onPress={() => navigation.navigate('EventDetail', { eventId: item.id })}
                 activeOpacity={0.8}
-                className="mr-4 w-60 overflow-hidden rounded-2xl bg-white shadow-sm"
+                className="mr-4 w-60 overflow-hidden rounded-2xl bg-background shadow-sm"
               >
                 <View className="h-28">
                   {/* Using a simple colored placeholder since Image might not load */}
-                  <View className="h-full w-full bg-purple-100" />
+                  <View className="h-full w-full bg-surface-elevated" />
                 </View>
                 <View className="p-3">
-                  <Text className="text-sm font-semibold text-gray-900" numberOfLines={1}>
+                  <Text className="text-sm font-semibold text-white" numberOfLines={1}>
                     {item.title}
                   </Text>
-                  <Text className="mt-0.5 text-xs text-gray-500">{item.venueName}</Text>
+                  <Text className="mt-0.5 text-xs text-text-muted">{item.venueName}</Text>
                   <View className="mt-2">
                     <FriendAvatarStack friends={item.friendsGoing} size={24} />
                   </View>
@@ -138,7 +138,7 @@ export default function HomeScreen() {
         </View>
 
         {/* Nearby Section Header */}
-        <Text className="mt-6 px-4 text-xl font-bold text-gray-900">
+        <Text className="mt-6 px-4 text-xl font-bold text-white">
           {t('home.nearby', 'Nearby 📍')}
         </Text>
       </View>
@@ -155,7 +155,7 @@ export default function HomeScreen() {
   );
 
   return (
-    <View className="flex-1 bg-white" style={{ paddingTop: insets.top }}>
+    <View className="flex-1 bg-background" style={{ paddingTop: insets.top }}>
       <FlatList
         data={nearbyEvents}
         keyExtractor={(item) => `nearby-${item.id}`}

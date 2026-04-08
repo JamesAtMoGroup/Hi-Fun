@@ -12,8 +12,8 @@ export default function PriceTag({ isFree, priceRange }: PriceTagProps) {
 
   if (isFree) {
     return (
-      <View className="rounded-full bg-emerald-500 px-2 py-0.5">
-        <Text className="text-xs font-semibold text-white">
+      <View className="rounded-full bg-neon-green px-3 py-1">
+        <Text className="text-[11px] font-bold uppercase tracking-wide text-background">
           {t('common.free', 'Free')}
         </Text>
       </View>
@@ -28,8 +28,8 @@ export default function PriceTag({ isFree, priceRange }: PriceTagProps) {
       : `NT$ ${priceRange.min}–${priceRange.max}`;
 
   return (
-    <View className="rounded-full bg-purple-100 px-2 py-0.5">
-      <Text className="text-xs font-semibold text-purple-700">{label}</Text>
+    <View className="rounded-full bg-background/80 px-3 py-1 border border-primary">
+      <Text className="text-[11px] font-bold text-primary-light">{label}</Text>
     </View>
   );
 }

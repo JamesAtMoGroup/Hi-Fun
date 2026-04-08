@@ -33,25 +33,25 @@ export default function NotificationItem({
 }: NotificationItemProps) {
   return (
     <TouchableOpacity
-      className={`flex-row px-4 py-3 border-b border-gray-100 ${
-        notification.isRead ? 'bg-white' : 'bg-purple-50'
+      className={`flex-row px-4 py-3 border-b border-border-light ${
+        notification.isRead ? 'bg-background' : 'bg-surface-elevated'
       }`}
       onPress={() => onPress(notification.id)}
     >
-      <View className="w-10 h-10 rounded-full bg-purple-100 items-center justify-center mr-3">
-        <Text className="text-purple-600 font-bold">
+      <View className="w-10 h-10 rounded-full bg-surface-elevated items-center justify-center mr-3">
+        <Text className="text-primary font-bold">
           {TYPE_ICONS[notification.type]}
         </Text>
       </View>
       <View className="flex-1">
-        <Text className="text-sm font-semibold text-gray-900">
+        <Text className="text-sm font-semibold text-white">
           {notification.title}
         </Text>
-        <Text className="text-xs text-gray-500 mt-0.5">
+        <Text className="text-xs text-text-muted mt-0.5">
           {notification.body}
         </Text>
       </View>
-      <Text className="text-xs text-gray-400 ml-2">
+      <Text className="text-xs text-text-muted ml-2">
         {timeAgo(notification.createdAt)}
       </Text>
     </TouchableOpacity>

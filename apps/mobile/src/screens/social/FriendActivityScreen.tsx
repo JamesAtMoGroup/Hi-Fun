@@ -27,10 +27,10 @@ export default function FriendActivityScreen() {
   );
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
+    <SafeAreaView className="flex-1 bg-background">
       {/* Header */}
-      <View className="border-b border-gray-100 px-4 pb-3 pt-4">
-        <Text className="text-xl font-bold text-gray-900">
+      <View className="border-b border-border-light px-4 pb-3 pt-4">
+        <Text className="text-xl font-bold text-white">
           {t('friendActivity.title', 'Friend Activity')}
         </Text>
       </View>
@@ -44,7 +44,7 @@ export default function FriendActivityScreen() {
         contentContainerStyle={{ paddingBottom: 32 }}
         ListEmptyComponent={
           <View className="items-center py-16">
-            <Text className="text-sm text-gray-400">
+            <Text className="text-sm text-text-muted">
               {t('friendActivity.empty', 'No activity yet. Add some friends to see what they are up to!')}
             </Text>
           </View>

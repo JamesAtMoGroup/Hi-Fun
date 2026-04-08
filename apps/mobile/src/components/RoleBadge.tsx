@@ -11,11 +11,11 @@ interface RoleBadgeProps {
 const ROLE_COLORS: Record<DatingRole, { bg: string; text: string }> = {
   top: { bg: 'bg-blue-500', text: 'text-white' },
   bottom: { bg: 'bg-red-500', text: 'text-white' },
-  vers: { bg: 'bg-purple-500', text: 'text-white' },
+  vers: { bg: 'bg-surface-elevated0', text: 'text-white' },
   vers_top: { bg: 'bg-blue-400', text: 'text-white' },
   vers_bottom: { bg: 'bg-red-400', text: 'text-white' },
   side: { bg: 'bg-gray-400', text: 'text-white' },
-  other: { bg: 'bg-gray-300', text: 'text-gray-700' },
+  other: { bg: 'bg-gray-300', text: 'text-text-secondary' },
 };
 
 const ROLE_LABELS: Record<DatingRole, string> = {

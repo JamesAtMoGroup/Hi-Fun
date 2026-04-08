@@ -50,7 +50,7 @@ const STATUS_STYLES: Record<string, { bg: string; text: string }> = {
   paid: { bg: 'bg-green-100', text: 'text-green-700' },
   pending: { bg: 'bg-yellow-100', text: 'text-yellow-700' },
   failed: { bg: 'bg-red-100', text: 'text-red-700' },
-  refunded: { bg: 'bg-gray-100', text: 'text-gray-500' },
+  refunded: { bg: 'bg-surface', text: 'text-text-muted' },
 };
 
 function formatDate(iso: string): string {
@@ -64,22 +64,22 @@ export default function OrderHistoryScreen() {
   const renderOrder = ({ item }: { item: MockOrder }) => {
     const style = STATUS_STYLES[item.paymentStatus] || STATUS_STYLES.paid;
     return (
-      <View className="mx-4 mb-3 bg-white rounded-xl border border-gray-100 p-4">
+      <View className="mx-4 mb-3 bg-background rounded-xl border border-border-light p-4">
         <View className="flex-row justify-between items-start">
           <View className="flex-1 mr-3">
-            <Text className="text-base font-semibold text-gray-900" numberOfLines={1}>
+            <Text className="text-base font-semibold text-white" numberOfLines={1}>
               {item.eventName}
             </Text>
-            <Text className="text-xs text-gray-500 mt-1">
+            <Text className="text-xs text-text-muted mt-1">
               {formatDate(item.date)}
             </Text>
           </View>
-          <Text className="text-base font-bold text-gray-900">
+          <Text className="text-base font-bold text-white">
             ${item.totalAmount}
           </Text>
         </View>
         <View className="flex-row justify-between items-center mt-3">
-          <Text className="text-xs text-gray-400">{item.currency}</Text>
+          <Text className="text-xs text-text-muted">{item.currency}</Text>
           <View className={`px-3 py-1 rounded-full ${style.bg}`}>
             <Text className={`text-xs font-medium ${style.text}`}>
               {t(`tickets.${item.paymentStatus}`)}
@@ -91,8 +91,8 @@ export default function OrderHistoryScreen() {
   };
 
   return (
-    <View className="flex-1 bg-white">
-      <Text className="text-xl font-bold text-gray-900 px-4 pt-6 pb-4">
+    <View className="flex-1 bg-background">
+      <Text className="text-xl font-bold text-white px-4 pt-6 pb-4">
         {t('tickets.orderHistory')}
       </Text>
       <FlatList

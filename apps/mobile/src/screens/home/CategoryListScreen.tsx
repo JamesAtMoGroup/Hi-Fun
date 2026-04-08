@@ -39,14 +39,14 @@ export default function CategoryListScreen() {
   );
 
   return (
-    <View className="flex-1 bg-white">
+    <View className="flex-1 bg-background">
       {/* Header */}
-      <View className="flex-row items-center border-b border-gray-100 px-4 pb-3 pt-4">
+      <View className="flex-row items-center border-b border-border-light px-4 pb-3 pt-4">
         <TouchableOpacity onPress={() => navigation.goBack()} className="mr-3">
-          <Text className="text-2xl text-gray-600">{'<'}</Text>
+          <Text className="text-2xl text-text-secondary">{'<'}</Text>
         </TouchableOpacity>
         <Text className="text-2xl mr-2">{emoji}</Text>
-        <Text className="text-xl font-bold text-gray-900">{label}</Text>
+        <Text className="text-xl font-bold text-white">{label}</Text>
       </View>
 
       {/* Event List */}

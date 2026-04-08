@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
+import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DarkTheme } from '@react-navigation/native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import '@/i18n'; // Initialize i18n
 import RootNavigator from '@/navigation/RootNavigator';
 import { useAuthStore } from '@/stores/authStore';
+import { colors } from '@/theme';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -16,6 +18,20 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+// Custom dark theme for React Navigation
+const navTheme = {
+  ...DarkTheme,
+  colors: {
+    ...DarkTheme.colors,
+    primary: colors.primary,
+    background: colors.background,
+    card: colors.surface,
+    text: colors.textPrimary,
+    border: colors.border,
+    notification: colors.secondary,
+  },
+};
 
 const linking = {
   prefixes: ['fomo://'],
@@ -40,7 +56,8 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <QueryClientProvider client={queryClient}>
-        <NavigationContainer linking={linking as any}>
+        <StatusBar style="light" />
+        <NavigationContainer theme={navTheme} linking={linking as any}>
           <RootNavigator />
         </NavigationContainer>
       </QueryClientProvider>

@@ -43,28 +43,28 @@ export default function SettingsScreen() {
   };
 
   return (
-    <ScrollView className="flex-1 bg-white">
-      <Text className="text-xl font-bold text-gray-900 px-6 pt-6 pb-4">
+    <ScrollView className="flex-1 bg-background">
+      <Text className="text-xl font-bold text-white px-6 pt-6 pb-4">
         {t('profile.settings')}
       </Text>
 
       {/* Language selector */}
-      <View className="px-6 py-3 border-b border-gray-100">
-        <Text className="text-sm font-medium text-gray-700 mb-2">
+      <View className="px-6 py-3 border-b border-border-light">
+        <Text className="text-sm font-medium text-text-secondary mb-2">
           {t('settings.language')}
         </Text>
         <View className="flex-row gap-3">
           <TouchableOpacity
             className={`flex-1 py-3 rounded-lg items-center border ${
               currentLang === 'zh-TW'
-                ? 'bg-purple-600 border-purple-600'
-                : 'bg-white border-gray-200'
+                ? 'bg-primary border-purple-600'
+                : 'bg-background border-border'
             }`}
             onPress={() => handleLanguageChange('zh-TW')}
           >
             <Text
               className={`text-sm font-medium ${
-                currentLang === 'zh-TW' ? 'text-white' : 'text-gray-700'
+                currentLang === 'zh-TW' ? 'text-white' : 'text-text-secondary'
               }`}
             >
               {t('settings.zhTW')}
@@ -73,14 +73,14 @@ export default function SettingsScreen() {
           <TouchableOpacity
             className={`flex-1 py-3 rounded-lg items-center border ${
               currentLang === 'en'
-                ? 'bg-purple-600 border-purple-600'
-                : 'bg-white border-gray-200'
+                ? 'bg-primary border-purple-600'
+                : 'bg-background border-border'
             }`}
             onPress={() => handleLanguageChange('en')}
           >
             <Text
               className={`text-sm font-medium ${
-                currentLang === 'en' ? 'text-white' : 'text-gray-700'
+                currentLang === 'en' ? 'text-white' : 'text-text-secondary'
               }`}
             >
               {t('settings.english')}
@@ -90,8 +90,8 @@ export default function SettingsScreen() {
       </View>
 
       {/* Push notifications */}
-      <View className="flex-row items-center justify-between px-6 py-4 border-b border-gray-100">
-        <Text className="text-base text-gray-900">
+      <View className="flex-row items-center justify-between px-6 py-4 border-b border-border-light">
+        <Text className="text-base text-white">
           {t('settings.pushNotifications')}
         </Text>
         <Switch
@@ -104,32 +104,32 @@ export default function SettingsScreen() {
 
       {/* Account section */}
       <View className="px-6 pt-4 pb-2">
-        <Text className="text-sm font-medium text-gray-500 uppercase mb-2">
+        <Text className="text-sm font-medium text-text-muted uppercase mb-2">
           {t('settings.account')}
         </Text>
       </View>
 
-      <View className="flex-row items-center justify-between px-6 py-4 border-b border-gray-100">
-        <Text className="text-base text-gray-900">{t('settings.email')}</Text>
-        <Text className="text-sm text-gray-500">alex@example.com</Text>
+      <View className="flex-row items-center justify-between px-6 py-4 border-b border-border-light">
+        <Text className="text-base text-white">{t('settings.email')}</Text>
+        <Text className="text-sm text-text-muted">alex@example.com</Text>
       </View>
 
       <TouchableOpacity
-        className="flex-row items-center justify-between px-6 py-4 border-b border-gray-100"
+        className="flex-row items-center justify-between px-6 py-4 border-b border-border-light"
         onPress={handleChangePassword}
       >
-        <Text className="text-base text-gray-900">
+        <Text className="text-base text-white">
           {t('settings.changePassword')}
         </Text>
-        <Text className="text-gray-400 text-lg">&gt;</Text>
+        <Text className="text-text-muted text-lg">&gt;</Text>
       </TouchableOpacity>
 
       {/* Log Out */}
       <TouchableOpacity
-        className="mx-6 mt-8 py-4 rounded-xl border border-gray-200 items-center"
+        className="mx-6 mt-8 py-4 rounded-xl border border-border items-center"
         onPress={handleLogout}
       >
-        <Text className="text-base font-semibold text-gray-900">
+        <Text className="text-base font-semibold text-white">
           {t('settings.logOut')}
         </Text>
       </TouchableOpacity>
@@ -145,7 +145,7 @@ export default function SettingsScreen() {
       </TouchableOpacity>
 
       {/* App version */}
-      <Text className="text-center text-xs text-gray-400 mt-8 mb-6">
+      <Text className="text-center text-xs text-text-muted mt-8 mb-6">
         {t('common.appVersion')} 1.0.0
       </Text>
     </ScrollView>

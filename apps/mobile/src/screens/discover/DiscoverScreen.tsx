@@ -33,24 +33,24 @@ export default function DiscoverScreen() {
 
   if (isLoading) {
     return (
-      <SafeAreaView className="flex-1 items-center justify-center bg-white">
+      <SafeAreaView className="flex-1 items-center justify-center bg-background">
         <ActivityIndicator size="large" color="#7C3AED" />
       </SafeAreaView>
     );
   }
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
+    <SafeAreaView className="flex-1 bg-background">
       {/* Header */}
-      <View className="flex-row items-center justify-between border-b border-gray-100 px-4 pb-3 pt-4">
-        <Text className="text-xl font-bold text-gray-900">
+      <View className="flex-row items-center justify-between border-b border-border-light px-4 pb-3 pt-4">
+        <Text className="text-xl font-bold text-white">
           {t('discover.title', 'Discover')}
         </Text>
         <TouchableOpacity
           onPress={handleFilterPress}
-          className="rounded-full bg-purple-100 px-4 py-2"
+          className="rounded-full bg-surface-elevated px-4 py-2"
         >
-          <Text className="text-sm font-semibold text-purple-600">
+          <Text className="text-sm font-semibold text-primary">
             {t('discover.filters', 'Filters')}
           </Text>
         </TouchableOpacity>

@@ -109,7 +109,7 @@ export default function MapScreen() {
   }, []);
 
   return (
-    <View className="flex-1 bg-white">
+    <View className="flex-1 bg-background">
       {/* Full-screen Map */}
       <MapView
         ref={mapRef}
@@ -174,13 +174,13 @@ export default function MapScreen() {
                 }}
                 className={`mr-2 mb-2 flex-row items-center rounded-full px-3 py-2 shadow-sm ${
                   selectedCategory === null
-                    ? 'bg-purple-600'
-                    : 'bg-white'
+                    ? 'bg-primary'
+                    : 'bg-background'
                 }`}
               >
                 <Text
                   className={`text-xs font-medium ${
-                    selectedCategory === null ? 'text-white' : 'text-gray-700'
+                    selectedCategory === null ? 'text-white' : 'text-text-secondary'
                   }`}
                 >
                   {t('map.all', 'All')}
@@ -193,13 +193,13 @@ export default function MapScreen() {
                     key={cat.key}
                     onPress={() => handleCategorySelect(cat.key)}
                     className={`mr-2 mb-2 flex-row items-center rounded-full px-3 py-2 shadow-sm ${
-                      isActive ? 'bg-purple-600' : 'bg-white'
+                      isActive ? 'bg-primary' : 'bg-background'
                     }`}
                   >
                     <Text className="mr-1 text-xs">{cat.emoji}</Text>
                     <Text
                       className={`text-xs font-medium ${
-                        isActive ? 'text-white' : 'text-gray-700'
+                        isActive ? 'text-white' : 'text-text-secondary'
                       }`}
                     >
                       {cat.label}
@@ -216,13 +216,13 @@ export default function MapScreen() {
                     key={cat.key}
                     onPress={() => handleCategorySelect(cat.key)}
                     className={`mr-2 mb-2 flex-row items-center rounded-full px-3 py-2 shadow-sm ${
-                      isActive ? 'bg-purple-600' : 'bg-white'
+                      isActive ? 'bg-primary' : 'bg-background'
                     }`}
                   >
                     <Text className="mr-1 text-xs">{cat.emoji}</Text>
                     <Text
                       className={`text-xs font-medium ${
-                        isActive ? 'text-white' : 'text-gray-700'
+                        isActive ? 'text-white' : 'text-text-secondary'
                       }`}
                     >
                       {cat.label}
@@ -238,7 +238,7 @@ export default function MapScreen() {
       {/* Locate me button - floating bottom-right */}
       <TouchableOpacity
         onPress={handleLocateMe}
-        className="absolute bottom-32 right-4 h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg"
+        className="absolute bottom-32 right-4 h-12 w-12 items-center justify-center rounded-full bg-background shadow-lg"
         activeOpacity={0.7}
       >
         <Text className="text-xl">📍</Text>
@@ -246,7 +246,7 @@ export default function MapScreen() {
 
       {/* Bottom sheet preview on marker tap */}
       {selectedMarker && (
-        <View className="absolute bottom-0 left-0 right-0 rounded-t-2xl bg-white px-4 pb-8 pt-3 shadow-lg">
+        <View className="absolute bottom-0 left-0 right-0 rounded-t-2xl bg-background px-4 pb-8 pt-3 shadow-lg">
           <View className="mb-3 self-center h-1 w-10 rounded-full bg-gray-300" />
           <EventCard
             event={mockEventSummaryFromMarker(selectedMarker)}

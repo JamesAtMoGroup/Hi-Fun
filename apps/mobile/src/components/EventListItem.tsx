@@ -26,7 +26,7 @@ export default function EventListItem({ event }: EventListItemProps) {
     <TouchableOpacity
       onPress={() => navigation.navigate('EventDetail', { eventId: event.id })}
       activeOpacity={0.7}
-      className="mb-2 flex-row items-center rounded-xl bg-white p-3"
+      className="mb-2 flex-row items-center rounded-xl bg-background p-3"
     >
       {/* Thumbnail */}
       <Image
@@ -37,13 +37,13 @@ export default function EventListItem({ event }: EventListItemProps) {
 
       {/* Info */}
       <View className="ml-3 flex-1">
-        <Text className="text-sm font-semibold text-gray-900" numberOfLines={1}>
+        <Text className="text-sm font-semibold text-white" numberOfLines={1}>
           {event.title}
         </Text>
-        <Text className="mt-0.5 text-xs text-gray-500">
+        <Text className="mt-0.5 text-xs text-text-muted">
           {formatDateTime(event.startTime)}
         </Text>
-        <Text className="text-xs text-gray-400" numberOfLines={1}>
+        <Text className="text-xs text-text-muted" numberOfLines={1}>
           {event.venueName}
         </Text>
       </View>

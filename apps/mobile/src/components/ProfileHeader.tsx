@@ -26,44 +26,44 @@ export default function ProfileHeader({
       {avatarUrl ? (
         <Image
           source={{ uri: avatarUrl }}
-          className="w-24 h-24 rounded-full bg-gray-200"
+          className="w-24 h-24 rounded-full bg-surface-elevated"
         />
       ) : (
-        <View className="w-24 h-24 rounded-full bg-purple-100 items-center justify-center">
-          <Text className="text-3xl text-purple-600">
+        <View className="w-24 h-24 rounded-full bg-surface-elevated items-center justify-center">
+          <Text className="text-3xl text-primary">
             {displayName.charAt(0).toUpperCase()}
           </Text>
         </View>
       )}
-      <Text className="text-xl font-bold text-gray-900 mt-3">
+      <Text className="text-xl font-bold text-white mt-3">
         {displayName}
       </Text>
       {bio ? (
-        <Text className="text-sm text-gray-500 mt-1 text-center">{bio}</Text>
+        <Text className="text-sm text-text-muted mt-1 text-center">{bio}</Text>
       ) : null}
 
       <View className="flex-row mt-4 w-full justify-around">
         <View className="items-center">
-          <Text className="text-lg font-bold text-gray-900">
+          <Text className="text-lg font-bold text-white">
             {eventsAttended}
           </Text>
-          <Text className="text-xs text-gray-500">
+          <Text className="text-xs text-text-muted">
             {t('profile.eventsAttended')}
           </Text>
         </View>
         <View className="items-center">
-          <Text className="text-lg font-bold text-gray-900">
+          <Text className="text-lg font-bold text-white">
             {friendCount}
           </Text>
-          <Text className="text-xs text-gray-500">
+          <Text className="text-xs text-text-muted">
             {t('profile.friends')}
           </Text>
         </View>
         <View className="items-center">
-          <Text className="text-lg font-bold text-gray-900">
+          <Text className="text-lg font-bold text-white">
             {eventsWantToGo}
           </Text>
-          <Text className="text-xs text-gray-500">
+          <Text className="text-xs text-text-muted">
             {t('profile.wantToGo')}
           </Text>
         </View>

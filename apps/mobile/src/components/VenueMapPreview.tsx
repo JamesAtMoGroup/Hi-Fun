@@ -47,7 +47,7 @@ export default function VenueMapPreview({
           />
         </MapView>
       </View>
-      <Text className="mt-2 text-sm text-gray-600">{address}</Text>
+      <Text className="mt-2 text-sm text-text-secondary">{address}</Text>
     </TouchableOpacity>
   );
 }

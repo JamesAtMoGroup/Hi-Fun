@@ -16,7 +16,7 @@ export default function PersonCard({ person, onPress }: PersonCardProps) {
     <TouchableOpacity
       onPress={() => onPress(person)}
       activeOpacity={0.85}
-      className="mb-4 overflow-hidden rounded-2xl bg-white shadow-sm"
+      className="mb-4 overflow-hidden rounded-2xl bg-background shadow-sm"
     >
       {/* Large Photo */}
       <View className="relative h-[300px] w-full">
@@ -41,7 +41,7 @@ export default function PersonCard({ person, onPress }: PersonCardProps) {
 
         {/* Events count badge */}
         {person.sharedEventCount > 0 && (
-          <View className="absolute right-3 top-3 rounded-full bg-purple-600 px-2.5 py-1">
+          <View className="absolute right-3 top-3 rounded-full bg-primary px-2.5 py-1">
             <Text className="text-xs font-bold text-white">
               {person.sharedEventCount} {t('discover.sharedEvents', 'shared events')}
             </Text>
@@ -51,11 +51,11 @@ export default function PersonCard({ person, onPress }: PersonCardProps) {
 
       {/* Bio preview */}
       <View className="px-4 py-3">
-        <Text className="text-sm text-gray-600" numberOfLines={2}>
+        <Text className="text-sm text-text-secondary" numberOfLines={2}>
           {person.bio}
         </Text>
         {person.mutualFriendCount > 0 && (
-          <Text className="mt-1 text-xs text-purple-600">
+          <Text className="mt-1 text-xs text-primary">
             {t('discover.mutualFriends', '{{count}} mutual friends', {
               count: person.mutualFriendCount,
             })}

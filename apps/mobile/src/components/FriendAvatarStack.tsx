@@ -47,14 +47,14 @@ export default function FriendAvatarStack({
       ))}
       {overflow > 0 && (
         <View
-          className="items-center justify-center rounded-full border-2 border-white bg-gray-200"
+          className="items-center justify-center rounded-full border-2 border-white bg-surface-elevated"
           style={{
             width: size,
             height: size,
             marginLeft: -(size * 0.3),
           }}
         >
-          <Text className="text-xs font-bold text-gray-600">+{overflow}</Text>
+          <Text className="text-xs font-bold text-text-secondary">+{overflow}</Text>
         </View>
       )}
     </View>

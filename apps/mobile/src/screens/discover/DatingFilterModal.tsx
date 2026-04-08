@@ -74,14 +74,14 @@ export default function DatingFilterModal() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
+    <SafeAreaView className="flex-1 bg-background">
       <ScrollView className="flex-1 px-4 pt-4">
         {/* Header */}
         <View className="mb-6 flex-row items-center justify-between">
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text className="text-base text-purple-600">{t('common.cancel', 'Cancel')}</Text>
+            <Text className="text-base text-primary">{t('common.cancel', 'Cancel')}</Text>
           </TouchableOpacity>
-          <Text className="text-lg font-bold text-gray-900">
+          <Text className="text-lg font-bold text-white">
             {t('datingFilter.title', 'Filters')}
           </Text>
           <TouchableOpacity onPress={handleReset}>
@@ -90,7 +90,7 @@ export default function DatingFilterModal() {
         </View>
 
         {/* Gender Multi-Select */}
-        <Text className="mb-2 text-base font-semibold text-gray-900">
+        <Text className="mb-2 text-base font-semibold text-white">
           {t('datingFilter.gender', 'Gender')}
         </Text>
         <View className="mb-5 flex-row flex-wrap">
@@ -101,12 +101,12 @@ export default function DatingFilterModal() {
                 key={g.value}
                 onPress={() => toggleGender(g.value)}
                 className={`mb-2 mr-2 rounded-full px-4 py-2 ${
-                  selected ? 'bg-purple-600' : 'bg-gray-100'
+                  selected ? 'bg-primary' : 'bg-surface'
                 }`}
               >
                 <Text
                   className={`text-sm font-medium ${
-                    selected ? 'text-white' : 'text-gray-700'
+                    selected ? 'text-white' : 'text-text-secondary'
                   }`}
                 >
                   {t(`gender.${g.value}`, g.label)}
@@ -117,7 +117,7 @@ export default function DatingFilterModal() {
         </View>
 
         {/* Role Multi-Select */}
-        <Text className="mb-2 text-base font-semibold text-gray-900">
+        <Text className="mb-2 text-base font-semibold text-white">
           {t('datingFilter.role', 'Role')}
         </Text>
         <View className="mb-5 flex-row flex-wrap">
@@ -128,12 +128,12 @@ export default function DatingFilterModal() {
                 key={r.value}
                 onPress={() => toggleRole(r.value)}
                 className={`mb-2 mr-2 rounded-full px-4 py-2 ${
-                  selected ? 'bg-purple-600' : 'bg-gray-100'
+                  selected ? 'bg-primary' : 'bg-surface'
                 }`}
               >
                 <Text
                   className={`text-sm font-medium ${
-                    selected ? 'text-white' : 'text-gray-700'
+                    selected ? 'text-white' : 'text-text-secondary'
                   }`}
                 >
                   {t(`dating.role_${r.value}`, r.label)}
@@ -144,7 +144,7 @@ export default function DatingFilterModal() {
         </View>
 
         {/* Age Range */}
-        <Text className="mb-2 text-base font-semibold text-gray-900">
+        <Text className="mb-2 text-base font-semibold text-white">
           {t('datingFilter.ageRange', 'Age Range')}
         </Text>
         <View className="mb-5 flex-row items-center">
@@ -153,25 +153,25 @@ export default function DatingFilterModal() {
             onChangeText={setAgeMin}
             keyboardType="number-pad"
             maxLength={2}
-            className="h-10 w-16 rounded-lg border border-gray-300 px-3 text-center text-sm text-gray-900"
+            className="h-10 w-16 rounded-lg border border-border px-3 text-center text-sm text-white"
             placeholder="18"
           />
-          <Text className="mx-3 text-gray-500">-</Text>
+          <Text className="mx-3 text-text-muted">-</Text>
           <TextInput
             value={ageMax}
             onChangeText={setAgeMax}
             keyboardType="number-pad"
             maxLength={2}
-            className="h-10 w-16 rounded-lg border border-gray-300 px-3 text-center text-sm text-gray-900"
+            className="h-10 w-16 rounded-lg border border-border px-3 text-center text-sm text-white"
             placeholder="99"
           />
-          <Text className="ml-2 text-sm text-gray-500">
+          <Text className="ml-2 text-sm text-text-muted">
             {t('datingFilter.years', 'years')}
           </Text>
         </View>
 
         {/* Max Distance */}
-        <Text className="mb-2 text-base font-semibold text-gray-900">
+        <Text className="mb-2 text-base font-semibold text-white">
           {t('datingFilter.maxDistance', 'Max Distance')}
         </Text>
         <View className="mb-6 flex-row items-center">
@@ -180,18 +180,18 @@ export default function DatingFilterModal() {
             onChangeText={setDistance}
             keyboardType="number-pad"
             maxLength={2}
-            className="h-10 w-16 rounded-lg border border-gray-300 px-3 text-center text-sm text-gray-900"
+            className="h-10 w-16 rounded-lg border border-border px-3 text-center text-sm text-white"
             placeholder="25"
           />
-          <Text className="ml-2 text-sm text-gray-500">km</Text>
+          <Text className="ml-2 text-sm text-text-muted">km</Text>
         </View>
       </ScrollView>
 
       {/* Apply Button */}
-      <View className="border-t border-gray-100 px-4 pb-6 pt-3">
+      <View className="border-t border-border-light px-4 pb-6 pt-3">
         <TouchableOpacity
           onPress={handleApply}
-          className="items-center rounded-full bg-purple-600 py-3.5"
+          className="items-center rounded-full bg-primary py-3.5"
         >
           <Text className="text-base font-semibold text-white">
             {t('datingFilter.apply', 'Apply Filters')}

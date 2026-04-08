@@ -31,46 +31,55 @@ export default function EventCard({ event, variant = 'horizontal' }: EventCardPr
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('EventDetail', { eventId: event.id })}
-      activeOpacity={0.8}
-      className={`overflow-hidden rounded-2xl bg-white shadow-sm ${
-        isHorizontal ? 'mr-4 w-72' : 'mb-4 w-full'
+      activeOpacity={0.85}
+      className={`overflow-hidden rounded-2xl bg-surface border border-border ${
+        isHorizontal ? 'mr-4 w-72' : 'mb-5 w-full'
       }`}
     >
       {/* Cover Image */}
-      <View className={isHorizontal ? 'h-36' : 'h-48'}>
+      <View className={isHorizontal ? 'h-40' : 'h-52'}>
         <Image
           source={{ uri: event.coverImageUrl }}
           className="h-full w-full"
           resizeMode="cover"
         />
+        {/* Dark gradient overlay for text readability */}
+        <View className="absolute inset-0 bg-background opacity-20" />
+
         {event.isPromoted && (
-          <View className="absolute left-2 top-2 rounded-full bg-amber-400 px-2 py-0.5">
-            <Text className="text-xs font-bold text-amber-900">
-              {t('event.promoted', 'Promoted')}
+          <View className="absolute left-3 top-3 rounded-full bg-neon-yellow px-3 py-1">
+            <Text className="text-[10px] font-bold uppercase tracking-wide text-background">
+              ✨ {t('event.promoted', 'Promoted')}
             </Text>
           </View>
         )}
-        <View className="absolute bottom-2 right-2">
+        <View className="absolute bottom-3 right-3">
           <PriceTag isFree={event.isFree} priceRange={event.priceRange} />
         </View>
       </View>
 
       {/* Content */}
-      <View className="p-3">
-        <Text className="text-base font-semibold text-gray-900" numberOfLines={1}>
+      <View className="p-4">
+        <Text className="text-base font-bold text-white" numberOfLines={1}>
           {event.title}
         </Text>
-        <Text className="mt-1 text-xs text-gray-500">
-          {formatDateTime(event.startTime)}
-        </Text>
-        <Text className="mt-0.5 text-xs text-gray-400" numberOfLines={1}>
-          {event.venueName}
-        </Text>
+        <View className="mt-2 flex-row items-center">
+          <Text className="text-xs text-neon-cyan">🕐</Text>
+          <Text className="ml-1 text-xs font-medium text-text-secondary">
+            {formatDateTime(event.startTime)}
+          </Text>
+        </View>
+        <View className="mt-1 flex-row items-center">
+          <Text className="text-xs text-text-muted">📍</Text>
+          <Text className="ml-1 flex-1 text-xs text-text-muted" numberOfLines={1}>
+            {event.venueName}
+          </Text>
+        </View>
 
         {event.friendsGoing && event.friendsGoing.length > 0 && (
-          <View className="mt-2 flex-row items-center">
-            <FriendAvatarStack friends={event.friendsGoing} size={22} />
-            <Text className="ml-1 text-xs text-gray-500">
+          <View className="mt-3 flex-row items-center rounded-full bg-surface-elevated px-3 py-1.5 self-start">
+            <FriendAvatarStack friends={event.friendsGoing} size={20} />
+            <Text className="ml-2 text-xs font-semibold text-neon-green">
               {t('event.friendsGoing', '{{count}} friends going', {
                 count: event.friendsGoing.length,
               })}

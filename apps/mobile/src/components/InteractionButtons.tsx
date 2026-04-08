@@ -56,20 +56,20 @@ export default function InteractionButtons({
     {
       type: 'attending',
       labelKey: 'interaction.attending',
-      activeClass: 'bg-purple-600',
-      inactiveClass: 'bg-gray-100',
+      activeClass: 'bg-primary',
+      inactiveClass: 'bg-surface',
     },
     {
       type: 'interested',
       labelKey: 'interaction.interested',
       activeClass: 'bg-pink-500',
-      inactiveClass: 'bg-gray-100',
+      inactiveClass: 'bg-surface',
     },
     {
       type: 'want_to_go',
       labelKey: 'interaction.wantToGo',
-      activeClass: 'border-2 border-purple-600 bg-purple-50',
-      inactiveClass: 'bg-gray-100',
+      activeClass: 'border-2 border-purple-600 bg-surface-elevated',
+      inactiveClass: 'bg-surface',
     },
   ];
 
@@ -90,7 +90,7 @@ export default function InteractionButtons({
                   ? type === 'want_to_go'
                     ? 'text-purple-700'
                     : 'text-white'
-                  : 'text-gray-600'
+                  : 'text-text-secondary'
               }`}
             >
               {t(labelKey)}
@@ -101,7 +101,7 @@ export default function InteractionButtons({
                   ? type === 'want_to_go'
                     ? 'text-purple-500'
                     : 'text-white/80'
-                  : 'text-gray-400'
+                  : 'text-text-muted'
               }`}
             >
               {counts[countKey(type)]}

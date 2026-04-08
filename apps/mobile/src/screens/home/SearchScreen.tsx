@@ -92,21 +92,21 @@ export default function SearchScreen() {
   );
 
   return (
-    <View className="flex-1 bg-white">
+    <View className="flex-1 bg-background">
       {/* Search Bar */}
-      <View className="flex-row items-center border-b border-gray-100 px-4 pb-3 pt-4">
+      <View className="flex-row items-center border-b border-border-light px-4 pb-3 pt-4">
         <TouchableOpacity onPress={() => navigation.goBack()} className="mr-3">
-          <Text className="text-2xl text-gray-600">{'<'}</Text>
+          <Text className="text-2xl text-text-secondary">{'<'}</Text>
         </TouchableOpacity>
-        <View className="flex-1 flex-row items-center rounded-xl bg-gray-100 px-3 py-2.5">
-          <Text className="mr-2 text-gray-400">{'🔍'}</Text>
+        <View className="flex-1 flex-row items-center rounded-xl bg-surface px-3 py-2.5">
+          <Text className="mr-2 text-text-muted">{'🔍'}</Text>
           <TextInput
             ref={inputRef}
             value={searchText}
             onChangeText={handleSearchChange}
             placeholder={t('search.placeholder', 'Search events, venues...')}
             placeholderTextColor="#9CA3AF"
-            className="flex-1 text-sm text-gray-900"
+            className="flex-1 text-sm text-white"
             returnKeyType="search"
             autoCorrect={false}
           />
@@ -117,7 +117,7 @@ export default function SearchScreen() {
                 setDebouncedSearch('');
               }}
             >
-              <Text className="text-gray-400">{'✕'}</Text>
+              <Text className="text-text-muted">{'✕'}</Text>
             </TouchableOpacity>
           )}
         </View>
@@ -133,7 +133,7 @@ export default function SearchScreen() {
             <TouchableOpacity
               key={filter.key}
               onPress={() => removeFilter(filter.key)}
-              className="mb-1 mr-2 flex-row items-center rounded-full bg-purple-100 px-3 py-1.5"
+              className="mb-1 mr-2 flex-row items-center rounded-full bg-surface-elevated px-3 py-1.5"
             >
               <Text className="mr-1 text-xs text-purple-700">{filter.label}</Text>
               <Text className="text-xs text-purple-400">{'✕'}</Text>
@@ -169,7 +169,7 @@ export default function SearchScreen() {
       ) : (
         <View className="flex-1 items-center justify-center px-8">
           <Text className="text-5xl mb-3">{'🎯'}</Text>
-          <Text className="text-center text-base text-gray-400">
+          <Text className="text-center text-base text-text-muted">
             {t('search.startSearching', 'Search for events, venues, or categories')}
           </Text>
         </View>

@@ -39,14 +39,14 @@ export default function ProfileScreen() {
   const insets = useSafeAreaInsets();
 
   return (
-    <View className="flex-1 bg-white" style={{ paddingTop: insets.top }}>
+    <View className="flex-1 bg-background" style={{ paddingTop: insets.top }}>
       <ScrollView>
         {/* Editable profile header area */}
         <TouchableOpacity
           className="absolute right-4 top-4 z-10"
           onPress={() => navigation.navigate('EditProfile')}
         >
-          <Text className="text-purple-600 text-sm font-medium">
+          <Text className="text-primary text-sm font-medium">
             {t('common.edit')}
           </Text>
         </TouchableOpacity>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTranslation } from 'react-i18next';
 import HomeStack from './stacks/HomeStack';
@@ -18,6 +19,13 @@ export type MainTabsParamList = {
 
 const Tab = createBottomTabNavigator<MainTabsParamList>();
 
+// Emoji tab icon helper
+const TabIcon = ({ emoji, focused }: { emoji: string; focused: boolean }) => (
+  <Text style={{ fontSize: focused ? 26 : 22, opacity: focused ? 1 : 0.5 }}>
+    {emoji}
+  </Text>
+);
+
 export default function MainTabs() {
   const { t } = useTranslation();
 
@@ -26,7 +34,20 @@ export default function MainTabs() {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.textSecondary,
+        tabBarInactiveTintColor: colors.textMuted,
+        tabBarStyle: {
+          backgroundColor: colors.surface,
+          borderTopColor: colors.border,
+          borderTopWidth: 1,
+          height: 88,
+          paddingBottom: 28,
+          paddingTop: 8,
+        },
+        tabBarLabelStyle: {
+          fontSize: 11,
+          fontWeight: '600',
+          marginTop: 2,
+        },
       }}
     >
       <Tab.Screen
@@ -34,9 +55,7 @@ export default function MainTabs() {
         component={HomeStack}
         options={{
           tabBarLabel: t('tabs.home'),
-          tabBarIcon: ({ color, size }) =>
-            // Placeholder icon — replace with actual icon library
-            undefined as any,
+          tabBarIcon: ({ focused }) => <TabIcon emoji="🏠" focused={focused} />,
         }}
       />
       <Tab.Screen
@@ -44,7 +63,7 @@ export default function MainTabs() {
         component={MapScreen}
         options={{
           tabBarLabel: t('tabs.map'),
-          tabBarIcon: ({ color, size }) => undefined as any,
+          tabBarIcon: ({ focused }) => <TabIcon emoji="🗺️" focused={focused} />,
         }}
       />
       <Tab.Screen
@@ -52,7 +71,7 @@ export default function MainTabs() {
         component={DiscoverStack}
         options={{
           tabBarLabel: t('tabs.discover'),
-          tabBarIcon: ({ color, size }) => undefined as any,
+          tabBarIcon: ({ focused }) => <TabIcon emoji="💜" focused={focused} />,
         }}
       />
       <Tab.Screen
@@ -60,7 +79,7 @@ export default function MainTabs() {
         component={TicketsStack}
         options={{
           tabBarLabel: t('tabs.tickets'),
-          tabBarIcon: ({ color, size }) => undefined as any,
+          tabBarIcon: ({ focused }) => <TabIcon emoji="🎟️" focused={focused} />,
         }}
       />
       <Tab.Screen
@@ -68,7 +87,7 @@ export default function MainTabs() {
         component={ProfileStack}
         options={{
           tabBarLabel: t('tabs.profile'),
-          tabBarIcon: ({ color, size }) => undefined as any,
+          tabBarIcon: ({ focused }) => <TabIcon emoji="👤" focused={focused} />,
         }}
       />
     </Tab.Navigator>

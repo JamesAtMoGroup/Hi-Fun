@@ -62,13 +62,13 @@ export default function DatingFilterScreen() {
   };
 
   return (
-    <ScrollView className="flex-1 bg-white px-6 pt-6">
-      <Text className="text-xl font-bold text-gray-900 mb-6">
+    <ScrollView className="flex-1 bg-background px-6 pt-6">
+      <Text className="text-xl font-bold text-white mb-6">
         {t('dating.datingFilters')}
       </Text>
 
       {/* Gender multi-select */}
-      <Text className="text-sm font-medium text-gray-700 mb-2">
+      <Text className="text-sm font-medium text-text-secondary mb-2">
         {t('dating.interestedInGenders')}
       </Text>
       <View className="flex-row flex-wrap gap-2 mb-6">
@@ -79,14 +79,14 @@ export default function DatingFilterScreen() {
               key={g}
               className={`px-4 py-2 rounded-full border ${
                 selected
-                  ? 'bg-purple-600 border-purple-600'
-                  : 'bg-white border-gray-200'
+                  ? 'bg-primary border-purple-600'
+                  : 'bg-background border-border'
               }`}
               onPress={() => toggleGender(g)}
             >
               <Text
                 className={`text-sm ${
-                  selected ? 'text-white font-semibold' : 'text-gray-700'
+                  selected ? 'text-white font-semibold' : 'text-text-secondary'
                 }`}
               >
                 {t(GENDER_LABEL_KEYS[g])}
@@ -97,7 +97,7 @@ export default function DatingFilterScreen() {
       </View>
 
       {/* Role multi-select */}
-      <Text className="text-sm font-medium text-gray-700 mb-2">
+      <Text className="text-sm font-medium text-text-secondary mb-2">
         {t('dating.interestedInRoles')}
       </Text>
       <View className="flex-row flex-wrap gap-2 mb-6">
@@ -108,14 +108,14 @@ export default function DatingFilterScreen() {
               key={r}
               className={`px-4 py-2 rounded-full border ${
                 selected
-                  ? 'bg-purple-600 border-purple-600'
-                  : 'bg-white border-gray-200'
+                  ? 'bg-primary border-purple-600'
+                  : 'bg-background border-border'
               }`}
               onPress={() => toggleRole(r)}
             >
               <Text
                 className={`text-sm ${
-                  selected ? 'text-white font-semibold' : 'text-gray-700'
+                  selected ? 'text-white font-semibold' : 'text-text-secondary'
                 }`}
               >
                 {t(ROLE_LABEL_KEYS[r])}
@@ -126,12 +126,12 @@ export default function DatingFilterScreen() {
       </View>
 
       {/* Age range */}
-      <Text className="text-sm font-medium text-gray-700 mb-2">
+      <Text className="text-sm font-medium text-text-secondary mb-2">
         {t('dating.ageRange')}
       </Text>
       <View className="flex-row items-center gap-3 mb-6">
         <TextInput
-          className="flex-1 border border-gray-200 rounded-lg px-4 py-3 text-base text-gray-900 text-center"
+          className="flex-1 border border-border rounded-lg px-4 py-3 text-base text-white text-center"
           value={String(filters.ageRange.min)}
           onChangeText={(text) => {
             const val = parseInt(text, 10);
@@ -140,9 +140,9 @@ export default function DatingFilterScreen() {
           keyboardType="number-pad"
           maxLength={2}
         />
-        <Text className="text-gray-500">—</Text>
+        <Text className="text-text-muted">—</Text>
         <TextInput
-          className="flex-1 border border-gray-200 rounded-lg px-4 py-3 text-base text-gray-900 text-center"
+          className="flex-1 border border-border rounded-lg px-4 py-3 text-base text-white text-center"
           value={String(filters.ageRange.max)}
           onChangeText={(text) => {
             const val = parseInt(text, 10);
@@ -154,12 +154,12 @@ export default function DatingFilterScreen() {
       </View>
 
       {/* Max distance */}
-      <Text className="text-sm font-medium text-gray-700 mb-2">
+      <Text className="text-sm font-medium text-text-secondary mb-2">
         {t('dating.maxDistance')}
       </Text>
       <View className="flex-row items-center gap-2 mb-8">
         <TextInput
-          className="flex-1 border border-gray-200 rounded-lg px-4 py-3 text-base text-gray-900"
+          className="flex-1 border border-border rounded-lg px-4 py-3 text-base text-white"
           value={String(filters.maxDistance)}
           onChangeText={(text) => {
             const val = parseInt(text, 10);
@@ -168,15 +168,15 @@ export default function DatingFilterScreen() {
           keyboardType="number-pad"
           maxLength={3}
         />
-        <Text className="text-gray-500">{t('dating.kmUnit')}</Text>
+        <Text className="text-text-muted">{t('dating.kmUnit')}</Text>
       </View>
 
       {/* Reset button */}
       <TouchableOpacity
-        className="border border-gray-200 rounded-xl py-4 items-center mb-12"
+        className="border border-border rounded-xl py-4 items-center mb-12"
         onPress={reset}
       >
-        <Text className="text-gray-700 font-medium text-base">
+        <Text className="text-text-secondary font-medium text-base">
           {t('common.retry')}
         </Text>
       </TouchableOpacity>

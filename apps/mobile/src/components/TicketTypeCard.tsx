@@ -34,27 +34,27 @@ export default function TicketTypeCard({
   return (
     <View
       className={`mb-3 rounded-xl border p-4 ${
-        isSoldOut ? 'border-gray-200 bg-gray-50' : 'border-gray-200 bg-white'
+        isSoldOut ? 'border-border bg-surface' : 'border-border bg-background'
       }`}
     >
       <View className="flex-row items-start justify-between">
         <View className="flex-1">
           <Text
             className={`text-base font-semibold ${
-              isSoldOut ? 'text-gray-400' : 'text-gray-900'
+              isSoldOut ? 'text-text-muted' : 'text-white'
             }`}
           >
             {ticketType.name}
           </Text>
           {ticketType.description && (
-            <Text className="mt-1 text-xs text-gray-500">
+            <Text className="mt-1 text-xs text-text-muted">
               {ticketType.description}
             </Text>
           )}
         </View>
         <Text
           className={`text-base font-bold ${
-            isSoldOut ? 'text-gray-400' : 'text-purple-700'
+            isSoldOut ? 'text-text-muted' : 'text-purple-700'
           }`}
         >
           NT$ {ticketType.price}
@@ -69,13 +69,13 @@ export default function TicketTypeCard({
             </Text>
           </View>
         ) : (
-          <Text className="text-xs text-gray-500">
+          <Text className="text-xs text-text-muted">
             {remaining} {t('eventDetail.remaining', 'remaining')}
           </Text>
         )}
 
         {!isSoldOut && (
-          <View className="flex-row items-center rounded-lg bg-gray-100">
+          <View className="flex-row items-center rounded-lg bg-surface">
             <TouchableOpacity
               onPress={handleDecrement}
               className="px-3 py-2"
@@ -84,13 +84,13 @@ export default function TicketTypeCard({
             >
               <Text
                 className={`text-lg font-bold ${
-                  quantity === 0 ? 'text-gray-300' : 'text-gray-700'
+                  quantity === 0 ? 'text-gray-300' : 'text-text-secondary'
                 }`}
               >
                 -
               </Text>
             </TouchableOpacity>
-            <Text className="min-w-[24px] text-center text-base font-semibold text-gray-900">
+            <Text className="min-w-[24px] text-center text-base font-semibold text-white">
               {quantity}
             </Text>
             <TouchableOpacity
@@ -101,7 +101,7 @@ export default function TicketTypeCard({
             >
               <Text
                 className={`text-lg font-bold ${
-                  quantity >= maxSelectable ? 'text-gray-300' : 'text-gray-700'
+                  quantity >= maxSelectable ? 'text-gray-300' : 'text-text-secondary'
                 }`}
               >
                 +

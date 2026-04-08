@@ -175,7 +175,7 @@ export default function EventDetailScreen() {
   };
 
   return (
-    <View className="flex-1 bg-white">
+    <View className="flex-1 bg-background">
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* 1. Cover Image */}
         <Image
@@ -190,7 +190,7 @@ export default function EventDetailScreen() {
           <View className="mb-4">
             {categoryInfo && (
               <View className="mb-2 flex-row">
-                <View className="flex-row items-center rounded-full bg-purple-100 px-3 py-1">
+                <View className="flex-row items-center rounded-full bg-surface-elevated px-3 py-1">
                   <Text className="mr-1 text-sm">{categoryInfo.emoji}</Text>
                   <Text className="text-xs font-semibold text-purple-700">
                     {categoryInfo.label}
@@ -206,17 +206,17 @@ export default function EventDetailScreen() {
               </View>
             )}
 
-            <Text className="text-2xl font-bold text-gray-900">{event.title}</Text>
+            <Text className="text-2xl font-bold text-white">{event.title}</Text>
 
             <View className="mt-2 flex-row items-center">
-              <Text className="text-sm text-gray-500">
+              <Text className="text-sm text-text-muted">
                 {formatDate(event.startTime)} {' \u00B7 '} {formatTime(event.startTime)} - {formatTime(event.endTime)}
               </Text>
             </View>
 
             <View className="mt-2 flex-row items-center">
               <PriceTag isFree={event.isFree} priceRange={event.priceRange} />
-              <Text className="ml-3 text-xs text-gray-400">
+              <Text className="ml-3 text-xs text-text-muted">
                 {event.attendingCount} {t('event.attending', 'attending')} {' \u00B7 '}{' '}
                 {event.interestedCount} {t('event.interested', 'interested')}
               </Text>
@@ -237,12 +237,12 @@ export default function EventDetailScreen() {
           {/* 4. Friends Going */}
           {friendsGoing.length > 0 && (
             <View className="mb-6">
-              <Text className="mb-2 text-lg font-semibold text-gray-900">
+              <Text className="mb-2 text-lg font-semibold text-white">
                 {t('eventDetail.friendsGoing', 'Friends Going')}
               </Text>
-              <View className="flex-row items-center rounded-xl bg-gray-50 p-3">
+              <View className="flex-row items-center rounded-xl bg-surface p-3">
                 <FriendAvatarStack friends={friendsGoing} maxVisible={4} size={36} />
-                <Text className="ml-3 flex-1 text-sm text-gray-600">
+                <Text className="ml-3 flex-1 text-sm text-text-secondary">
                   {friendsGoing[0].displayName}
                   {friendsGoing.length > 1 &&
                     ` ${t('eventDetail.andOthers', 'and {{count}} others', {
@@ -255,10 +255,10 @@ export default function EventDetailScreen() {
 
           {/* 5. Venue Info with Mini Map */}
           <View className="mb-6">
-            <Text className="mb-2 text-lg font-semibold text-gray-900">
+            <Text className="mb-2 text-lg font-semibold text-white">
               {t('eventDetail.venue', 'Venue')}
             </Text>
-            <Text className="mb-1 text-base font-medium text-gray-800">
+            <Text className="mb-1 text-base font-medium text-white">
               {event.venueName}
             </Text>
             <VenueMapPreview
@@ -281,11 +281,11 @@ export default function EventDetailScreen() {
 
           {/* 6. Description (expandable) */}
           <View className="mb-6">
-            <Text className="mb-2 text-lg font-semibold text-gray-900">
+            <Text className="mb-2 text-lg font-semibold text-white">
               {t('eventDetail.about', 'About')}
             </Text>
             <Text
-              className="text-sm leading-5 text-gray-600"
+              className="text-sm leading-5 text-text-secondary"
               numberOfLines={descriptionExpanded ? undefined : 4}
             >
               {event.description}
@@ -295,7 +295,7 @@ export default function EventDetailScreen() {
                 onPress={() => setDescriptionExpanded(!descriptionExpanded)}
                 className="mt-1"
               >
-                <Text className="text-sm font-semibold text-purple-600">
+                <Text className="text-sm font-semibold text-primary">
                   {descriptionExpanded
                     ? t('eventDetail.readLess', 'Read less')
                     : t('eventDetail.readMore', 'Read more')}
@@ -306,7 +306,7 @@ export default function EventDetailScreen() {
 
           {/* 7. Ticket Types */}
           <View className="mb-6">
-            <Text className="mb-3 text-lg font-semibold text-gray-900">
+            <Text className="mb-3 text-lg font-semibold text-white">
               {t('eventDetail.tickets', 'Tickets')}
             </Text>
             {event.ticketTypes.map((tt) => (
@@ -322,11 +322,11 @@ export default function EventDetailScreen() {
           {/* 8. Organizer Info Card */}
           {event.organizer && (
             <View className="mb-6">
-              <Text className="mb-2 text-lg font-semibold text-gray-900">
+              <Text className="mb-2 text-lg font-semibold text-white">
                 {t('eventDetail.organizer', 'Organizer')}
               </Text>
               <TouchableOpacity
-                className="flex-row items-center rounded-xl border border-gray-200 bg-white p-4"
+                className="flex-row items-center rounded-xl border border-border bg-background p-4"
                 activeOpacity={0.7}
               >
                 {event.organizer.logoUrl ? (
@@ -335,15 +335,15 @@ export default function EventDetailScreen() {
                     className="h-12 w-12 rounded-full"
                   />
                 ) : (
-                  <View className="h-12 w-12 items-center justify-center rounded-full bg-purple-100">
-                    <Text className="text-lg font-bold text-purple-600">
+                  <View className="h-12 w-12 items-center justify-center rounded-full bg-surface-elevated">
+                    <Text className="text-lg font-bold text-primary">
                       {event.organizer.businessName.charAt(0)}
                     </Text>
                   </View>
                 )}
                 <View className="ml-3 flex-1">
                   <View className="flex-row items-center">
-                    <Text className="text-base font-semibold text-gray-900">
+                    <Text className="text-base font-semibold text-white">
                       {event.organizer.businessName}
                     </Text>
                     {event.organizer.isVerified && (
@@ -351,17 +351,17 @@ export default function EventDetailScreen() {
                     )}
                   </View>
                   {event.organizer.googleRating && (
-                    <Text className="mt-0.5 text-xs text-gray-500">
+                    <Text className="mt-0.5 text-xs text-text-muted">
                       ★ {event.organizer.googleRating} {t('eventDetail.rating', 'rating')}
                     </Text>
                   )}
                   {event.organizer.description && (
-                    <Text className="mt-1 text-xs text-gray-400" numberOfLines={2}>
+                    <Text className="mt-1 text-xs text-text-muted" numberOfLines={2}>
                       {event.organizer.description}
                     </Text>
                   )}
                 </View>
-                <Text className="text-gray-400">›</Text>
+                <Text className="text-text-muted">›</Text>
               </TouchableOpacity>
             </View>
           )}
@@ -370,8 +370,8 @@ export default function EventDetailScreen() {
           {event.tags.length > 0 && (
             <View className="mb-6 flex-row flex-wrap">
               {event.tags.map((tag) => (
-                <View key={tag} className="mb-2 mr-2 rounded-full bg-gray-100 px-3 py-1">
-                  <Text className="text-xs text-gray-600">#{tag}</Text>
+                <View key={tag} className="mb-2 mr-2 rounded-full bg-surface px-3 py-1">
+                  <Text className="text-xs text-text-secondary">#{tag}</Text>
                 </View>
               ))}
             </View>
@@ -380,11 +380,11 @@ export default function EventDetailScreen() {
       </ScrollView>
 
       {/* Sticky Bottom Bar */}
-      <View className="absolute bottom-0 left-0 right-0 border-t border-gray-100 bg-white px-4 pb-8 pt-3">
+      <View className="absolute bottom-0 left-0 right-0 border-t border-border-light bg-background px-4 pb-8 pt-3">
         {event.externalTicketUrl ? (
           <TouchableOpacity
             onPress={handleBuyTickets}
-            className="items-center rounded-xl bg-purple-600 py-4"
+            className="items-center rounded-xl bg-primary py-4"
             activeOpacity={0.8}
           >
             <Text className="text-base font-bold text-white">
@@ -395,7 +395,7 @@ export default function EventDetailScreen() {
           <TouchableOpacity
             onPress={handleBuyTickets}
             className={`items-center rounded-xl py-4 ${
-              totalTickets > 0 ? 'bg-purple-600' : 'bg-gray-300'
+              totalTickets > 0 ? 'bg-primary' : 'bg-gray-300'
             }`}
             activeOpacity={0.8}
             disabled={totalTickets === 0}

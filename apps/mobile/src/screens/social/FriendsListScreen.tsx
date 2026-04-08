@@ -47,23 +47,23 @@ export default function FriendsListScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
+    <SafeAreaView className="flex-1 bg-background">
       {/* Header */}
-      <View className="border-b border-gray-100 px-4 pb-3 pt-4">
-        <Text className="text-xl font-bold text-gray-900">
+      <View className="border-b border-border-light px-4 pb-3 pt-4">
+        <Text className="text-xl font-bold text-white">
           {t('friends.title', 'Friends')}
         </Text>
       </View>
 
       {/* Search Bar */}
-      <View className="mx-4 mt-3 flex-row items-center rounded-xl bg-gray-100 px-4 py-2.5">
-        <Text className="mr-2 text-gray-400">🔍</Text>
+      <View className="mx-4 mt-3 flex-row items-center rounded-xl bg-surface px-4 py-2.5">
+        <Text className="mr-2 text-text-muted">🔍</Text>
         <TextInput
           value={search}
           onChangeText={setSearch}
           placeholder={t('friends.searchPlaceholder', 'Search friends...')}
           placeholderTextColor="#9CA3AF"
-          className="flex-1 text-sm text-gray-900"
+          className="flex-1 text-sm text-white"
         />
       </View>
 
@@ -76,24 +76,24 @@ export default function FriendsListScreen() {
         ListHeaderComponent={
           pending.length > 0 ? (
             <View className="mx-4 mt-4">
-              <Text className="mb-2 text-base font-semibold text-gray-900">
+              <Text className="mb-2 text-base font-semibold text-white">
                 {t('friends.pendingRequests', 'Pending Requests')} ({pending.length})
               </Text>
               {pending.map((friend) => (
                 <View
                   key={friend.id}
-                  className="mb-2 flex-row items-center rounded-xl bg-purple-50 p-3"
+                  className="mb-2 flex-row items-center rounded-xl bg-surface-elevated p-3"
                 >
                   <Image
                     source={{ uri: friend.avatarUrl }}
-                    className="h-10 w-10 rounded-full bg-gray-200"
+                    className="h-10 w-10 rounded-full bg-surface-elevated"
                   />
-                  <Text className="ml-3 flex-1 text-sm font-medium text-gray-900">
+                  <Text className="ml-3 flex-1 text-sm font-medium text-white">
                     {friend.displayName}
                   </Text>
                   <TouchableOpacity
                     onPress={() => handleAccept(friend.id, friend.displayName)}
-                    className="mr-2 rounded-full bg-purple-600 px-4 py-1.5"
+                    className="mr-2 rounded-full bg-primary px-4 py-1.5"
                   >
                     <Text className="text-xs font-semibold text-white">
                       {t('friends.accept', 'Accept')}
@@ -101,22 +101,22 @@ export default function FriendsListScreen() {
                   </TouchableOpacity>
                   <TouchableOpacity
                     onPress={() => handleReject(friend.id)}
-                    className="rounded-full bg-gray-200 px-4 py-1.5"
+                    className="rounded-full bg-surface-elevated px-4 py-1.5"
                   >
-                    <Text className="text-xs font-semibold text-gray-600">
+                    <Text className="text-xs font-semibold text-text-secondary">
                       {t('friends.reject', 'Reject')}
                     </Text>
                   </TouchableOpacity>
                 </View>
               ))}
-              <View className="mb-2 mt-4 border-b border-gray-100" />
-              <Text className="mb-2 text-base font-semibold text-gray-900">
+              <View className="mb-2 mt-4 border-b border-border-light" />
+              <Text className="mb-2 text-base font-semibold text-white">
                 {t('friends.allFriends', 'All Friends')} ({accepted.length})
               </Text>
             </View>
           ) : (
             <View className="mx-4 mt-4">
-              <Text className="mb-2 text-base font-semibold text-gray-900">
+              <Text className="mb-2 text-base font-semibold text-white">
                 {t('friends.allFriends', 'All Friends')} ({accepted.length})
               </Text>
             </View>
@@ -129,17 +129,17 @@ export default function FriendsListScreen() {
           >
             <Image
               source={{ uri: item.avatarUrl }}
-              className="h-11 w-11 rounded-full bg-gray-200"
+              className="h-11 w-11 rounded-full bg-surface-elevated"
             />
-            <Text className="ml-3 flex-1 text-sm font-medium text-gray-900">
+            <Text className="ml-3 flex-1 text-sm font-medium text-white">
               {item.displayName}
             </Text>
-            <Text className="text-xs text-gray-400">{'>'}</Text>
+            <Text className="text-xs text-text-muted">{'>'}</Text>
           </TouchableOpacity>
         )}
         ListEmptyComponent={
           <View className="items-center py-16">
-            <Text className="text-sm text-gray-400">
+            <Text className="text-sm text-text-muted">
               {search
                 ? t('friends.noResults', 'No friends match your search')
                 : t('friends.empty', 'No friends yet')}

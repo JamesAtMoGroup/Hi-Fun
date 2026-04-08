@@ -59,18 +59,18 @@ export default function MyEventsScreen() {
   const events = MOCK_EVENTS[currentKey];
 
   const renderEvent = ({ item }: { item: MockEvent }) => (
-    <TouchableOpacity className="flex-row bg-white border-b border-gray-100 px-4 py-3">
-      <View className="w-16 h-16 rounded-lg bg-purple-100 items-center justify-center mr-3">
-        <Text className="text-purple-600 text-lg font-bold">
+    <TouchableOpacity className="flex-row bg-background border-b border-border-light px-4 py-3">
+      <View className="w-16 h-16 rounded-lg bg-surface-elevated items-center justify-center mr-3">
+        <Text className="text-primary text-lg font-bold">
           {item.title.charAt(0)}
         </Text>
       </View>
       <View className="flex-1 justify-center">
-        <Text className="text-base font-semibold text-gray-900" numberOfLines={1}>
+        <Text className="text-base font-semibold text-white" numberOfLines={1}>
           {item.title}
         </Text>
-        <Text className="text-xs text-gray-500 mt-1">{item.venueName}</Text>
-        <Text className="text-xs text-gray-400 mt-0.5">
+        <Text className="text-xs text-text-muted mt-1">{item.venueName}</Text>
+        <Text className="text-xs text-text-muted mt-0.5">
           {formatDate(item.startTime)}
         </Text>
       </View>
@@ -78,8 +78,8 @@ export default function MyEventsScreen() {
   );
 
   return (
-    <View className="flex-1 bg-white">
-      <Text className="text-xl font-bold text-gray-900 px-4 pt-6 pb-2">
+    <View className="flex-1 bg-background">
+      <Text className="text-xl font-bold text-white px-4 pt-6 pb-2">
         {t('profile.myEvents')}
       </Text>
       <SegmentedControl

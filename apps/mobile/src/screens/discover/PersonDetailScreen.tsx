@@ -127,7 +127,7 @@ export default function PersonDetailScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
+    <SafeAreaView className="flex-1 bg-background">
       <ScrollView className="flex-1">
         {/* Back button */}
         <TouchableOpacity
@@ -165,7 +165,7 @@ export default function PersonDetailScreen() {
               <View
                 key={i}
                 className={`mx-1 h-2 w-2 rounded-full ${
-                  i === photoIndex ? 'bg-purple-600' : 'bg-gray-300'
+                  i === photoIndex ? 'bg-primary' : 'bg-gray-300'
                 }`}
               />
             ))}
@@ -175,12 +175,12 @@ export default function PersonDetailScreen() {
         {/* Name, age, gender, role */}
         <View className="mt-4 px-4">
           <View className="flex-row items-center">
-            <Text className="mr-2 text-2xl font-bold text-gray-900">
+            <Text className="mr-2 text-2xl font-bold text-white">
               {person.displayName}, {person.age}
             </Text>
             <RoleBadge role={person.role} size="md" />
           </View>
-          <Text className="mt-1 text-sm text-gray-500">
+          <Text className="mt-1 text-sm text-text-muted">
             {t(`gender.${person.gender}`, GENDER_LABELS[person.gender])} ·{' '}
             {person.distance} km {t('discover.away', 'away')}
           </Text>
@@ -188,38 +188,38 @@ export default function PersonDetailScreen() {
 
         {/* Bio */}
         <View className="mt-4 px-4">
-          <Text className="text-base font-semibold text-gray-900">
+          <Text className="text-base font-semibold text-white">
             {t('personDetail.about', 'About')}
           </Text>
-          <Text className="mt-1 text-sm leading-5 text-gray-600">{person.bio}</Text>
+          <Text className="mt-1 text-sm leading-5 text-text-secondary">{person.bio}</Text>
         </View>
 
         {/* Events in Common */}
         <View className="mt-6 px-4">
-          <Text className="mb-3 text-base font-semibold text-gray-900">
+          <Text className="mb-3 text-base font-semibold text-white">
             {t('personDetail.eventsInCommon', 'Events in Common')}
           </Text>
           {EVENTS_IN_COMMON.length === 0 ? (
-            <Text className="text-sm text-gray-400">
+            <Text className="text-sm text-text-muted">
               {t('personDetail.noCommonEvents', 'No events in common yet')}
             </Text>
           ) : (
             EVENTS_IN_COMMON.map((evt) => (
               <TouchableOpacity
                 key={evt.id}
-                className="mb-2 flex-row items-center rounded-xl bg-gray-50 p-3"
+                className="mb-2 flex-row items-center rounded-xl bg-surface p-3"
                 activeOpacity={0.7}
               >
                 <Image
                   source={{ uri: evt.coverImageUrl }}
-                  className="h-12 w-12 rounded-lg bg-gray-200"
+                  className="h-12 w-12 rounded-lg bg-surface-elevated"
                   resizeMode="cover"
                 />
                 <View className="ml-3 flex-1">
-                  <Text className="text-sm font-semibold text-gray-900" numberOfLines={1}>
+                  <Text className="text-sm font-semibold text-white" numberOfLines={1}>
                     {evt.title}
                   </Text>
-                  <Text className="text-xs text-gray-500">
+                  <Text className="text-xs text-text-muted">
                     {evt.venueName} · {formatDate(evt.startTime)}
                   </Text>
                 </View>
@@ -230,25 +230,25 @@ export default function PersonDetailScreen() {
 
         {/* Their Upcoming Events */}
         <View className="mt-6 px-4 pb-6">
-          <Text className="mb-3 text-base font-semibold text-gray-900">
+          <Text className="mb-3 text-base font-semibold text-white">
             {t('personDetail.theirEvents', 'Their Upcoming Events')}
           </Text>
           {THEIR_EVENTS.map((evt) => (
             <TouchableOpacity
               key={evt.id}
-              className="mb-2 flex-row items-center rounded-xl bg-gray-50 p-3"
+              className="mb-2 flex-row items-center rounded-xl bg-surface p-3"
               activeOpacity={0.7}
             >
               <Image
                 source={{ uri: evt.coverImageUrl }}
-                className="h-12 w-12 rounded-lg bg-gray-200"
+                className="h-12 w-12 rounded-lg bg-surface-elevated"
                 resizeMode="cover"
               />
               <View className="ml-3 flex-1">
-                <Text className="text-sm font-semibold text-gray-900" numberOfLines={1}>
+                <Text className="text-sm font-semibold text-white" numberOfLines={1}>
                   {evt.title}
                 </Text>
-                <Text className="text-xs text-gray-500">
+                <Text className="text-xs text-text-muted">
                   {evt.venueName} · {formatDate(evt.startTime)}
                 </Text>
               </View>
@@ -258,12 +258,12 @@ export default function PersonDetailScreen() {
       </ScrollView>
 
       {/* Send Friend Request */}
-      <View className="border-t border-gray-100 px-4 pb-6 pt-3">
+      <View className="border-t border-border-light px-4 pb-6 pt-3">
         <TouchableOpacity
           onPress={handleSendFriendRequest}
           disabled={requestSent}
           className={`items-center rounded-full py-3.5 ${
-            requestSent ? 'bg-gray-300' : 'bg-purple-600'
+            requestSent ? 'bg-gray-300' : 'bg-primary'
           }`}
         >
           <Text className="text-base font-semibold text-white">

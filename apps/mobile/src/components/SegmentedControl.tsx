@@ -13,20 +13,20 @@ export default function SegmentedControl({
   onChange,
 }: SegmentedControlProps) {
   return (
-    <View className="flex-row bg-gray-100 rounded-xl p-1 mx-4 my-2">
+    <View className="flex-row bg-surface rounded-xl p-1 mx-4 my-2">
       {segments.map((label, index) => {
         const isActive = index === activeIndex;
         return (
           <TouchableOpacity
             key={label}
             className={`flex-1 py-2 rounded-lg items-center ${
-              isActive ? 'bg-white shadow-sm' : ''
+              isActive ? 'bg-background shadow-sm' : ''
             }`}
             onPress={() => onChange(index)}
           >
             <Text
               className={`text-sm font-medium ${
-                isActive ? 'text-purple-600' : 'text-gray-500'
+                isActive ? 'text-primary' : 'text-text-muted'
               }`}
             >
               {label}

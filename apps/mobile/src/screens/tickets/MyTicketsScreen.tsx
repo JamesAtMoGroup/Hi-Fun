@@ -86,30 +86,30 @@ export default function MyTicketsScreen() {
 
   const renderTicket = ({ item }: { item: MockTicket }) => (
     <TouchableOpacity
-      className="mx-4 mb-4 bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100"
+      className="mx-4 mb-4 bg-background rounded-2xl shadow-sm overflow-hidden border border-border-light"
       onPress={() => navigation.navigate('TicketDetail', { ticketId: item.id })}
     >
       {/* Cover image placeholder */}
-      <View className="h-36 bg-purple-100 items-center justify-center">
-        <Text className="text-purple-600 text-3xl font-bold">
+      <View className="h-36 bg-surface-elevated items-center justify-center">
+        <Text className="text-primary text-3xl font-bold">
           {item.eventTitle.charAt(0)}
         </Text>
       </View>
       <View className="p-4">
-        <Text className="text-base font-semibold text-gray-900" numberOfLines={1}>
+        <Text className="text-base font-semibold text-white" numberOfLines={1}>
           {item.eventTitle}
         </Text>
-        <Text className="text-sm text-gray-500 mt-1">{formatDate(item.date)}</Text>
-        <Text className="text-sm text-gray-400 mt-0.5">{item.venueName}</Text>
+        <Text className="text-sm text-text-muted mt-1">{formatDate(item.date)}</Text>
+        <Text className="text-sm text-text-muted mt-0.5">{item.venueName}</Text>
         <View className="flex-row items-center justify-between mt-3">
           <View
             className={`px-3 py-1 rounded-full ${
-              item.status === 'valid' ? 'bg-green-100' : 'bg-gray-100'
+              item.status === 'valid' ? 'bg-green-100' : 'bg-surface'
             }`}
           >
             <Text
               className={`text-xs font-medium ${
-                item.status === 'valid' ? 'text-green-700' : 'text-gray-500'
+                item.status === 'valid' ? 'text-green-700' : 'text-text-muted'
               }`}
             >
               {t(`tickets.${item.status}`)}
@@ -117,7 +117,7 @@ export default function MyTicketsScreen() {
           </View>
           {item.status === 'valid' && (
             <TouchableOpacity
-              className="bg-purple-600 px-4 py-2 rounded-lg"
+              className="bg-primary px-4 py-2 rounded-lg"
               onPress={() =>
                 navigation.navigate('TicketDetail', { ticketId: item.id })
               }
@@ -133,13 +133,13 @@ export default function MyTicketsScreen() {
   );
 
   return (
-    <View className="flex-1 bg-white" style={{ paddingTop: insets.top }}>
+    <View className="flex-1 bg-background" style={{ paddingTop: insets.top }}>
       <View className="flex-row items-center justify-between px-4 pt-6 pb-2">
-        <Text className="text-xl font-bold text-gray-900">
+        <Text className="text-xl font-bold text-white">
           {t('tickets.myTickets')}
         </Text>
         <TouchableOpacity onPress={() => navigation.navigate('OrderHistory')}>
-          <Text className="text-purple-600 text-sm font-medium">
+          <Text className="text-primary text-sm font-medium">
             {t('tickets.orderHistory')}
           </Text>
         </TouchableOpacity>

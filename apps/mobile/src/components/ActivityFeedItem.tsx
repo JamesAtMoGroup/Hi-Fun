@@ -32,22 +32,22 @@ export default function ActivityFeedItem({ activity, onEventPress }: ActivityFee
     <TouchableOpacity
       onPress={() => onEventPress(activity.event.id)}
       activeOpacity={0.7}
-      className="flex-row items-center border-b border-gray-100 px-4 py-3"
+      className="flex-row items-center border-b border-border-light px-4 py-3"
     >
       {/* Avatar */}
       <Image
         source={{ uri: activity.user.avatarUrl || 'https://picsum.photos/seed/default/100/100' }}
-        className="h-10 w-10 rounded-full bg-gray-200"
+        className="h-10 w-10 rounded-full bg-surface-elevated"
       />
 
       {/* Text */}
       <View className="ml-3 flex-1">
-        <Text className="text-sm text-gray-900" numberOfLines={2}>
+        <Text className="text-sm text-white" numberOfLines={2}>
           <Text className="font-semibold">{activity.user.displayName}</Text>
           {' '}{actionLabel}{' '}
-          <Text className="font-semibold text-purple-600">{activity.event.title}</Text>
+          <Text className="font-semibold text-primary">{activity.event.title}</Text>
         </Text>
-        <Text className="mt-0.5 text-xs text-gray-400">
+        <Text className="mt-0.5 text-xs text-text-muted">
           {activity.event.venueName} · {timeAgo(activity.createdAt)}
         </Text>
       </View>
@@ -55,7 +55,7 @@ export default function ActivityFeedItem({ activity, onEventPress }: ActivityFee
       {/* Event thumbnail */}
       <Image
         source={{ uri: activity.event.coverImageUrl }}
-        className="ml-2 h-12 w-12 rounded-lg bg-gray-200"
+        className="ml-2 h-12 w-12 rounded-lg bg-surface-elevated"
         resizeMode="cover"
       />
     </TouchableOpacity>
